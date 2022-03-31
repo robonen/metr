@@ -31,8 +31,8 @@
 
 ```bash
 git clone https://github.com/robonen/metr-frontend.git
-cd frontend
-npm install
+cd metr-frontend
+npm i
 ```
 
 ### Запуск в режиме разработки
