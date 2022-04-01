@@ -32,7 +32,7 @@
 ```bash
 git clone https://github.com/robonen/metr-frontend.git
 cd metr-frontend
-npm i
+npm install
 ```
 
 ### Запуск в режиме разработки
