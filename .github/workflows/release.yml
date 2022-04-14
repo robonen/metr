@@ -26,7 +26,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         rm: true
         strip_components: 1
-        source: "dist/"
+        source: "."
         target: ${{ secrets.SERVER_DIR }}
 
     - name: Notify
