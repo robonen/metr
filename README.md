@@ -7,10 +7,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/chemodan-tours/landing/actions">
+  <a href="https://github.com/robonen/metr-frontend/actions">
     <img src="https://github.com/robonen/metr-frontend/actions/workflows/release.yml/badge.svg" title="Release status">
   </a>
-  <a href="https://github.com/chemodan-tours/landing/actions">
+  <a href="https://github.com/robonen/metr-frontend/actions">
     <img src="https://github.com/robonen/metr-frontend/actions/workflows/test.yml/badge.svg" title="Lint status">
   </a>
 </p>
