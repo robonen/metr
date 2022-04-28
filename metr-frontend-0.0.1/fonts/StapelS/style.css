@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Stapel';
+    src: local('Stapel Semi Expanded Bold'), local('Stapel-Semi-Expanded-Bold'),
+        url('Stapel-SemiExpandedBold.woff2') format('woff2'),
+        url('Stapel-SemiExpandedBold.woff') format('woff'),
+        url('Stapel-SemiExpandedBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
