@@ -23,4 +23,5 @@
         </div>
     </form>
 </div>
+    <script src="public/js/login.js"></script>
 @endsection

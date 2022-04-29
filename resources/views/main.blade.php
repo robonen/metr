@@ -166,4 +166,5 @@
         </div>
     </div>
 </footer>
+<script src="public/js/main_page.js"></script>
 @endsection
