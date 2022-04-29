@@ -1,4 +1,4 @@
-# Metr Frontend
+# Metr
 
 <p align="center">
   <a href="https://forma-web.ru">
@@ -18,7 +18,7 @@
   </a>
 </p>
 
-## Git Flow ⚠
+## Github Flow ⚠
 
 Продакшен ветка - `master`
 
