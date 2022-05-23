@@ -1,29 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Metr</title>
-</head>
-<body>
+<template>
     <header class="header">
         <div class="container">
             <div class="header__table">
                 <div class="header__image"></div>
                 <div class="header__block">
                     <div class="header__block__content">
-                        <img src="../resources/images/location.png" alt="">
+                        <img src="@/assets/images/location.png" alt="">
                         <a class="nav__link_tomsk" href="#">Томск</a>
                     </div>
                 </div>
                 <div class="header__block">
                     <div class="header__block__contenttop">
-                        <a class="nav__link" href="#">каталог</a>
+                        <a class="nav__link" href="#" id="catalog">каталог</a>
                     </div>
                     <div class="header__block__contentdown">
                         <a class="nav__link" href="#">блог</a>
@@ -44,7 +32,7 @@
                         </div>
                         <div class="search__img">
                             <a class="nav__link" href="#">
-                                <img src="../layout/assets/images/search.jpg" alt="">
+                                <img src="@/assets/images/search.jpg" alt="">
                             </a>
                         </div>
                     </div>
@@ -52,13 +40,13 @@
                 <div class="header__contacts">
                     <div class="header__contacts__imgtop">
                         <a class="nav__link" href="#">
-                            <img src="../layout/assets/images/tell.jpg" alt="">
+                            <img src="@/assets/images/tell.jpg" alt="">
                         </a>
                     </div>
                     <div class="header__contacts__img">
-                        <a class="nav__link" href="#">
-                            <img src="../layout/assets/images/user.jpg" alt="">
-                        </a>
+                        <router-link to="/auth" class="nav__link" href="#" id="user">
+                            <img src="@/assets/images/user.jpg" alt="">
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -99,34 +87,34 @@
             <h3 class="about__us">Подберем подходящее жилье для вас.</h3>
         </div>
     </section>
-
+    
     <section class="suggestions">
         <div class="suggestions__title">
             <h3 class="newhome">Интересные предложения</h3>
         </div>
         <div class="suggestions__images">
             <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="../layout/assets/images/1.jpg" alt=""></a></div>
+                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
                 <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
             </div>
             <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="../layout/assets/images/1.jpg" alt=""></a></div>
+                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
                 <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
             </div>
             <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="../layout/assets/images/3.jpg" alt=""></a></div>
+                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>
                 <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
             </div>
             <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="../layout/assets/images/4.jpg" alt=""></a></div>
+                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>
                 <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
             </div>
             <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="../layout/assets/images/6.jpg" alt=""></a></div>
+                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
                 <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
             </div>
             <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="../layout/assets/images/6.jpg" alt=""></a></div>
+                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
                 <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
             </div>
         </div>
@@ -143,7 +131,7 @@
             </div>
             <div class="header__block">
                 <div class="header__block__content">
-                    <img src="../resources/images/location.png" alt="">
+                    <img src="assets/images/location.png" alt="">
                     <a class="nav__link_tomsk" href="#">Томск</a>
                 </div>
             </div>
@@ -164,7 +152,7 @@
                 </div>
             </div>
             <div class="footer__search">
-
+            
             </div>
             <div class="footer__contacts">
                 <div class="footer__contacts__imgtop">
@@ -176,6 +164,11 @@
             </div>
         </div>
     </footer>
+    
+</template>
 
-</body>
-</html>
+<style scoped>
+    @import url("@/assets/css/main.css");
+</style>
+
+    

@@ -1,26 +1,6 @@
 /* Fonts */
 
-  @import url("../../fonts/StapelS/style.css");
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color:  rgba(124, 173, 201, 1);
-    font-size: 17px;
-    color: white;
-    background: black;
-    line-height: 1.6;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-}
 
 /* Main */
 .main {
@@ -58,15 +38,15 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 
     color: white;
-
+    
 }
 
 .header__image {
     width: 140px;
     height: 96px;
     margin: 0 auto;
-
-    background: url("../../../resources/images/metr.svg") center
+    
+    background: url("@/assets/images/metr.svg") center
     no-repeat;
     background-size: cover;
     border-right: 2px solid white;
@@ -160,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: white;
     font-size: 15px;
-
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -171,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: white;
     font-size: 15px;
-
+    
 }
 
 .nav__link:hover, .nav__link_tomsk:hover {
@@ -189,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 250px;
 
     background-image: linear-gradient(to top, rgb(124, 173, 201, 1), rgb(94, 196, 242, 0.3)), url(
-    "../../../resources/images/intro.jpg");
+ "@/assets/images/intro.jpg");
     background-size: cover;
 }
 
@@ -242,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     text-decoration: none;
     margin: 0 auto;
-
+    
     font-weight: 500;
     color: white;
 }
@@ -288,7 +268,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* About */
 
-.about {
+.about { 
     height: 100vh;
     background-color:  rgba(124, 173, 201, 1);
     margin: 0 auto;
@@ -314,7 +294,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 590px;
     border: 1px solid black;
     background-image: linear-gradient(to top, rgb(124, 173, 201, 0.6), rgb(94, 196, 242, 0.2)), url(
-    "../../../resources/images/video.jpg");
+ "@/assets/images/video.jpg");
     background-size: cover;
 
 }
@@ -328,7 +308,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: flex-end;
 }
-
+    
 /* Suggestions */
 
 .suggestions {
@@ -377,20 +357,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gradient {
-
+    
 	display: inline-block;
-	position: relative;
+	position: relative;    
 	line-height: 0;
 }
 
 .gradient:after {
 	content: "";
-	display: block;
+	display: block;    
 	width: 100%;
-	height: 100%;
+	height: 100%;    
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 0;      
+	left: 0;   
 	background: transparent;
 	background-image: linear-gradient(to bottom, rgba(15, 34, 38, 0.4), rgba(99, 137, 159, 0.8));
 	opacity: 0.8;

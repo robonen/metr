@@ -1,22 +1,4 @@
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color:  rgba(124, 173, 201, 1);
-    font-size: 17px;
-    color: white;
-    line-height: 1.6;
-}
 
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-}
 
 .container {
     width: 100%;
@@ -24,7 +6,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1920px;
     margin: 0 auto;
     background-image: linear-gradient(to top, rgb(124, 173, 201, 0.2), rgb(124, 173, 201, 0.2)), url(
-    "../../../resources/images/intro.jpg");
+ "@/assets/images/intro.jpg");
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -40,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 .logoMetr {
     width: 185px;
     height: 100px;
-    background: url("../../../resources/images/metr.svg") center
+    background: url("@/assets/images/metr.svg") center
     no-repeat;
     background-size: cover;
 }
@@ -85,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 50px;
     padding-left: 1%;
 }
-
+ 
 input {
     margin: 0;
     padding: 0;
