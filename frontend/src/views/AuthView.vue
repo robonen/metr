@@ -34,7 +34,7 @@
 <script>
 export default {
   data ()  {
-    return {authForm: true}
+    return { authForm: true }
   }
 }
 </script>>
