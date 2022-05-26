@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('middle_name')->nullable();
-            $table->string('email')->unique();
-            $table->string('phone')->unique()->nullable();
-            $table->string('photo')->nullable();
-            $table->string('password');
+            $table->foreignId('owner_id');
+            $table->string('name');
+            $table->enum('type', ['studio']);
+            $table->decimal('price');
+            $table->unsignedSmallInteger('rooms');
+            $table->string('yandex_mark')->nullable();
+            $table->text('text');
+            $table->boolean('is_group');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('offers');
     }
 };
