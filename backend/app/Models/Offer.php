@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderTypesEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +22,8 @@ class Offer extends Model
         'price',
         'rooms',
         'yandex_mark',
-        'text',
+        'location',
+        'description',
         'is_group',
     ];
 
@@ -31,6 +33,8 @@ class Offer extends Model
      * @var array<string, string>
      */
     protected $casts = [
-//        'is_group' => 'boolean',
+        'type' => OrderTypesEnum::class,
+        'price' => 'double',
+        'is_group' => 'boolean',
     ];
 }

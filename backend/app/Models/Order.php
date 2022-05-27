@@ -31,5 +31,7 @@ class Order extends Model
     protected $casts = [
         'start_date' => 'datetime',
         'end_date' => 'datetime',
+        'price' => 'double',
+        'discount' => 'double',
     ];
 }
