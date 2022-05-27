@@ -1,6 +1,6 @@
 /* Fonts */
 
-@import url("../../fonts/StapelS/style.css");
+@import url("@/assets/fonts/StapelS/style.css");
 
 body {
     margin: 0;
@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 96px;
     margin: 0 auto;
     
-    background: url("../images/metr.svg") center
+    background: url("@/assets/images/metr.svg") center
     no-repeat;
     background-size: cover;
     border-right: 2px solid white;
@@ -189,7 +189,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 250px;
 
     background-image: linear-gradient(to top, rgb(124, 173, 201, 1), rgb(94, 196, 242, 0.3)), url(
- "../images/intro.jpg");
+    "@/assets/images/intro.jpg");
     background-size: cover;
 }
 
@@ -314,7 +314,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 590px;
     border: 1px solid black;
     background-image: linear-gradient(to top, rgb(124, 173, 201, 0.6), rgb(94, 196, 242, 0.2)), url(
- "../images/video.jpg");
+    "@/assets/images/video.jpg");
     background-size: cover;
 
 }

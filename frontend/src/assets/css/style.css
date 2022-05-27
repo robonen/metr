@@ -1,6 +1,6 @@
 /* Fonts */
 
-  @import url("../../fonts/StapelS/style.css");
+  @import url("@/assets/fonts/StapelS/style.css");
 
 body {
     margin: 0;
