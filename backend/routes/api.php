@@ -1,6 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +19,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->group(function() {
+
+    Route::post('registration', RegistrationController::class);
+    Route::post('login', LoginController::class);
+
+    Route::middleware('auth:sanctum')->group(function() {
+        Route::post('logout', LogoutController::class);
+    });
+
 });
+
+Route::middleware('auth:sanctum')->group(function() {
+
+    Route::prefix('user')->group(function() {
+        Route::get('', [UserController::class, 'index']);
+        Route::put('', [UserController::class, 'update']);
+    });
+
+    Route::apiResource('orders', OrderController::class);
+
+});
+
+Route::apiResource('offers', OfferController::class);
+
+// TODO: На главной странице 6 самых дорогих квартир
+// TODO: Последние добавленные квартиры + фильтры
