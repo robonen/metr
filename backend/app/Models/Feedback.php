@@ -19,4 +19,13 @@ class Feedback extends Model
         'comment',
         'rating',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'rating' => 'integer',
+    ];
 }

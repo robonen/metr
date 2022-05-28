@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\OfferFilter;
 use App\Http\Requests\StoreOfferRequest;
 use App\Http\Requests\UpdateOfferRequest;
 use App\Http\Resources\OfferResource;
@@ -15,9 +16,9 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(): AnonymousResourceCollection
+    public function index(OfferFilter $filters): AnonymousResourceCollection
     {
-        return OfferResource::collection(Offer::all());
+        return OfferResource::collection(Offer::filter($filters)->get());
     }
 
     /**

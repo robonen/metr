@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Enums\OrderTypesEnum;
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
 
     /**
      * The attributes that are mass assignable.
