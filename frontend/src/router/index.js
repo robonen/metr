@@ -3,6 +3,7 @@ import MainView from '@/views/MainView.vue'
 import AuthView from '@/views/AuthView.vue'
 import CatalogView from "@/views/CatalogView.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import OfferView from "@/views/OfferView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: ProfileView
+    },
+    {
+      path: '/offer',
+      name: 'offer',
+      component: OfferView
     },
   ]
 })

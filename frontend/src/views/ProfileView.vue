@@ -2,7 +2,10 @@
   <header class="header">
     <div class="container">
       <div class="header__table">
-        <div class="header__image"></div>
+        <div class="header__image">
+          <router-link to="/" class="nav__link" href="#">
+          </router-link>
+        </div>
         <div class="header__block">
           <div class="header__block__content">
             <img src="@/assets/images/location.png" alt="">
@@ -11,7 +14,7 @@
         </div>
         <div class="header__block">
           <div class="header__block__contenttop">
-            <a class="nav__link" href="#">каталог</a>
+            <router-link to="/catalog" class="nav__link" href="#">каталог</router-link>
           </div>
           <div class="header__block__contentdown">
             <a class="nav__link" href="#">блог</a>
@@ -74,30 +77,37 @@
         </div>
         <div class="user__hrefs">
           <div class="aboutme">
-            <a href="#"><h2>Обо мне</h2></a>
+            <a @click.prevent="activeTab = 'profile-about'">
+              <h2>Обо мне</h2>
+            </a>
           </div>
           <div class="my__notice">
-            <a href="#"><h2>Мои объявления</h2></a>
+            <a @click.prevent="activeTab = 'profile-my-offers'">
+              <h2>Мои объявления</h2></a>
           </div>
-<!--          <div class="add__notice">-->
-<!--            <a href="#"><h2>Добавить объявление</h2></a>-->
-<!--          </div>-->
+          <div class="add__notice">
+            <a @click.prevent="activeTab = 'profile-add-offer'">
+              <h2>Добавить объявление</h2>
+            </a>
+          </div>
 <!--          <div class="favorites">-->
 <!--            <a href="#"><h2>Избранное</h2></a>-->
 <!--          </div>-->
         </div>
       </div>
-      <profile-about></profile-about>
+      <component :is="activeTab"></component>
     </div>
   </div>
 </template>
 
 <script>
 import ProfileAbout from "@/components/ProfileAbout.vue";
+import ProfileMyOffers from "@/components/ProfileMyOffers.vue";
+import ProfileAddOffer from "@/components/ProfileAddOffer.vue";
 export default {
-  components: {ProfileAbout},
+  components: {ProfileAbout, ProfileMyOffers, ProfileAddOffer},
   data ()  {
-    return { ButtonForm: true }
+    return { activeTab : "profile-about" }
   }
 }
 </script>>

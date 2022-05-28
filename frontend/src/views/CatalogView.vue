@@ -2,7 +2,10 @@
   <header class="header">
     <div class="container">
       <div class="header__table">
-        <div class="header__image"></div>
+        <div class="header__image">
+          <router-link to="/" class="nav__link" href="#">
+          </router-link>
+        </div>
         <div class="header__block">
           <div class="header__block__content">
             <img src="~@/assets/images/location.png" alt="">
@@ -44,9 +47,9 @@
             </a>
           </div>
           <div class="header__contacts__img">
-            <a class="nav__link" href="#">
+            <router-link to="/auth" class="nav__link" href="#" id="user">
               <img src="@/assets/images/user.jpg" alt="">
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -87,28 +90,40 @@
     </div>
     <div class="suggestions__images">
       <div class="podlozhka">
-        <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-        <div class="sugg__text"><p>2-к. Квартира, 34 м кв</p><h2>2 900 000₽</h2></div>
+        <router-link to="/offer" class="nav__link" href="#">
+          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
+          <div class="sugg__text"><p>2-к. Квартира, 34 м кв</p><h2>2 900 000₽</h2></div>
+        </router-link>
       </div>
       <div class="podlozhka">
-        <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-        <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>4 900 000₽</h2></div>
+        <router-link to="/offer" class="nav__link" href="#">
+          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
+          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>4 900 000₽</h2></div>
+        </router-link>
       </div>
       <div class="podlozhka">
-        <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>
-        <div class="sugg__text"><p>1-к. Квартира, 34 м кв</p><h2>1 900 000₽</h2></div>
+        <router-link to="/offer" class="nav__link" href="#">
+          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>
+          <div class="sugg__text"><p>1-к. Квартира, 34 м кв</p><h2>1 900 000₽</h2></div>
+        </router-link>>
       </div>
       <div class="podlozhka">
-        <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>
-        <div class="sugg__text"><p>5-к. Квартира, 34 м кв</p><h2>10 900 000₽</h2></div>
+        <router-link to="/offer" class="nav__link" href="#">
+          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>
+          <div class="sugg__text"><p>5-к. Квартира, 34 м кв</p><h2>10 900 000₽</h2></div>
+        </router-link>
       </div>
       <div class="podlozhka">
-        <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-        <div class="sugg__text"><p>6-к. Квартира, 34 м кв</p><h2>15 900 000₽</h2></div>
+        <router-link to="/offer" class="nav__link" href="#">
+          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
+          <div class="sugg__text"><p>6-к. Квартира, 34 м кв</p><h2>15 900 000₽</h2></div>
+        </router-link>
       </div>
       <div class="podlozhka">
-        <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-        <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>5 900 000₽</h2></div>
+        <router-link to="/offer" class="nav__link" href="#">
+          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
+          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>5 900 000₽</h2></div>
+        </router-link>
       </div>
     </div>
   </section>
