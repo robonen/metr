@@ -14,8 +14,6 @@ class UpdateOrderRequest extends BaseRequest
         return [
             'offer_id' => ['numeric', 'exists:offers,id'],
             'user_id' => ['numeric', 'exists:users,id'],
-            'start_date' => ['date'],
-            'end_date' => ['date'],
             'price' => ['numeric', 'min:0.1'],
             'discount' => ['numeric', 'min:0.1'],
         ];

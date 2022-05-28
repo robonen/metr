@@ -15,11 +15,12 @@ class UpdateOfferRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'owner_id' => ['numeric', 'exists:users,id'],
+            'user_id' => ['numeric', 'exists:users,id'],
             'name' => ['string'],
             'type' => [new Enum(OrderTypesEnum::class)],
-            'price' => ['numeric'],
-            'rooms' => ['numeric'],
+            'price' => ['numeric', 'min:0.1'],
+            'rooms' => ['numeric', 'min:1'],
+            'space' => ['numeric', 'min:1'],
             'yandex_mark' => ['string'],
             'location' => ['string'],
             'description' => ['string'],

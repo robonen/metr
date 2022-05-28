@@ -16,11 +16,12 @@ class Offer extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'owner_id',
+        'user_id',
         'name',
         'type',
         'price',
         'rooms',
+        'space',
         'yandex_mark',
         'location',
         'description',
@@ -34,6 +35,7 @@ class Offer extends Model
      */
     protected $casts = [
         'type' => OrderTypesEnum::class,
+        'space' => 'double',
         'price' => 'double',
         'is_group' => 'boolean',
     ];

@@ -15,11 +15,12 @@ class StoreOfferRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'owner_id' => ['required', 'numeric', 'exists:users,id'],
+            'user_id' => ['required', 'numeric', 'exists:users,id'],
             'name' => ['required', 'string'],
             'type' => ['required', new Enum(OrderTypesEnum::class)],
-            'price' => ['required', 'numeric'],
-            'rooms' => ['required', 'numeric'],
+            'price' => ['required', 'numeric', 'min:0.1'],
+            'rooms' => ['required', 'numeric', 'min:1'],
+            'space' => ['required', 'numeric', 'min:1'],
             'yandex_mark' => ['string'],
             'location' => ['required', 'string'],
             'description' => ['required', 'string'],

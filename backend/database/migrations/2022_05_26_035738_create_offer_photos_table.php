@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('offer_photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('offer_id');
             $table->string('file');
             $table->timestamps();
+
+            $table
+                ->foreignId('offer_id')
+                ->constrained()
+                ->onUpdate('cascade');
         });
     }
 

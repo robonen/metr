@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Feedback extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,6 @@ class Review extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'offer_id',
         'user_id',
         'comment',
         'rating',

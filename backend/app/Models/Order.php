@@ -17,8 +17,6 @@ class Order extends Model
     protected $fillable = [
         'offer_id',
         'user_id',
-        'start_date',
-        'end_date',
         'price',
         'discount',
     ];
@@ -29,8 +27,6 @@ class Order extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
         'price' => 'double',
         'discount' => 'double',
     ];

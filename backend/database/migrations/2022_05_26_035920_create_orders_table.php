@@ -15,13 +15,21 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('offer_id');
-            $table->foreignId('user_id');
-            $table->date('start_date');
-            $table->date('end_date');
             $table->decimal('price');
             $table->decimal('discount');
             $table->timestamps();
+
+            $table
+                ->foreignId('offer_id')
+                ->constrained()
+                ->onDelete('set null')
+                ->onUpdate('cascade');
+
+            $table
+                ->foreignId('user_id')
+                ->constrained()
+                ->onDelete('set null')
+                ->onUpdate('cascade');
         });
     }
 
