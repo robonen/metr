@@ -81,7 +81,7 @@
             <div class="other__images">
               <a href="#"><img src="../assets/images/offer3.png" alt=""></a>
               <a href="#"><img src="../assets/images/offer2.png" alt=""></a>
-              <a href="#"><img src="@/assets/images/adv4.png" alt=""></a>
+              <a href="#"><img src="../assets/images/offer4.png" alt=""></a>
             </div>
           </div>
         </div>

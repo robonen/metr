@@ -6,7 +6,7 @@
                 <div class="header__block">
                     <div class="header__block__content">
                         <img src="@/assets/images/location.png" alt="">
-                        <a class="nav__link_tomsk" href="#">Томск</a>
+                        <a class="nav__link_tomsk" href="#"> Томск</a>
                     </div>
                 </div>
                 <div class="header__block">
