@@ -6,13 +6,16 @@
                 <div class="header__block">
                     <div class="header__block__content">
                         <img src="@/assets/images/location.png" alt="">
-                        <a class="nav__link_tomsk" href="#">Томск</a>
+                        <a class="nav__link_tomsk" href="#"> Томск</a>
                     </div>
                 </div>
                 <div class="header__block">
                     <div class="header__block__contenttop">
-                        <a class="nav__link" href="#" id="catalog">каталог</a>
+                      <router-link to="/catalog" class="nav__link" href="#" id="catalog">
+                          каталог
+                      </router-link>
                     </div>
+
                     <div class="header__block__contentdown">
                         <a class="nav__link" href="#">блог</a>
                     </div>
@@ -27,9 +30,7 @@
                 </div>
                 <div class="header__search">
                     <div class="search">
-                        <div class="search__block">
-
-                        </div>
+                        <input class="search__block">
                         <div class="search__img">
                             <a class="nav__link" href="#">
                                 <img src="@/assets/images/search.jpg" alt="">
@@ -93,30 +94,12 @@
             <h3 class="newhome">Интересные предложения</h3>
         </div>
         <div class="suggestions__images">
-            <div class="podlozhka">
+
+            <div class="podlozhka" v-for="offer in offers">
                 <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
+                <div class="sugg__text"><p>{{offer.name}}}</p><h2>{{ offer.price }}₽</h2></div>
             </div>
-            <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
-            </div>
-            <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
-            </div>
-            <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
-            </div>
-            <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
-            </div>
-            <div class="podlozhka">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>Студия на Кирова, 12</p><h2>1298000₽</h2></div>
-            </div>
+
         </div>
         <div class="afterword">
             <p class="afterword">Это подборка лучших вариантов, найденных</p>
@@ -166,6 +149,21 @@
     </footer>
     
 </template>
+
+<script>
+export default {
+  data ()  {
+    return { offers: [] }
+  },
+  async mounted() {
+    const requests = await fetch('http://tusur.tk:9080/api/offers');
+    const offers = await requests.json();
+    this.offers = offers.data;
+  }
+
+}
+
+</script>
 
 <style scoped>
     @import url("@/assets/css/main.css");
