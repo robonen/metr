@@ -107,47 +107,7 @@
             <p class="after__afterword">Вдруг ваше будущее жилье здесь?</p>
         </div>
     </section>
-
-    <footer class="footer">
-        <div class="header__table">
-            <div class="header__image">
-            </div>
-            <div class="header__block">
-                <div class="header__block__content">
-                    <img src="assets/images/location.png" alt="">
-                    <a class="nav__link_tomsk" href="#">Томск</a>
-                </div>
-            </div>
-            <div class="header__block">
-                <div class="header__block__contenttop">
-                    <a class="nav__link" href="#">вконтакте</a>
-                </div>
-                <div class="header__block__contentbott">
-                    <a class="nav__link" href="#">инстаграм</a>
-                </div>
-            </div>
-            <div class="header__block">
-                <div class="header__block__contenttop">
-                    <a class="nav__link" href="#">фэйсбук</a>
-                </div>
-                <div class="header__block__contentdown">
-                    <a class="nav__link" href="#">твиттер</a>
-                </div>
-            </div>
-            <div class="footer__search">
-            
-            </div>
-            <div class="footer__contacts">
-                <div class="footer__contacts__imgtop">
-                    <a class="nav__link" href="#">+7-495-291-32-01</a>
-                </div>
-                <div class="footer__contacts__img">
-                    <a class="nav__link" href="#">вконтакте</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
+    <TheFooter></TheFooter>
 </template>
 
 <script>

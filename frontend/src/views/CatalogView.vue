@@ -89,44 +89,51 @@
       </div>
     </div>
     <div class="suggestions__images">
-      <div class="podlozhka">
+<!--      <div class="podlozhka">-->
+<!--        <router-link to="/offer" class="nav__link" href="#">-->
+<!--          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>-->
+<!--          <div class="sugg__text"><p>2-к. Квартира, 34 м кв</p><h2>2 900 000₽</h2></div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+<!--      <div class="podlozhka">-->
+<!--        <router-link to="/offer" class="nav__link" href="#">-->
+<!--          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>-->
+<!--          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>4 900 000₽</h2></div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+<!--      <div class="podlozhka">-->
+<!--        <router-link to="/offer" class="nav__link" href="#">-->
+<!--          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>-->
+<!--          <div class="sugg__text"><p>1-к. Квартира, 34 м кв</p><h2>1 900 000₽</h2></div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+<!--      <div class="podlozhka">-->
+<!--        <router-link to="/offer" class="nav__link" href="#">-->
+<!--          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>-->
+<!--          <div class="sugg__text"><p>5-к. Квартира, 34 м кв</p><h2>10 900 000₽</h2></div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+<!--      <div class="podlozhka">-->
+<!--        <router-link to="/offer" class="nav__link" href="#">-->
+<!--          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>-->
+<!--          <div class="sugg__text"><p>6-к. Квартира, 34 м кв</p><h2>15 900 000₽</h2></div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+<!--      <div class="podlozhka">-->
+<!--        <router-link to="/offer" class="nav__link" href="#">-->
+<!--          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>-->
+<!--          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>5 900 000₽</h2></div>-->
+<!--        </router-link>-->
+<!--      </div>-->
+      <div class="podlozhka" v-for="offer in offers">
         <router-link to="/offer" class="nav__link" href="#">
           <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>2-к. Квартира, 34 м кв</p><h2>2 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>4 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>1-к. Квартира, 34 м кв</p><h2>1 900 000₽</h2></div>
-        </router-link>>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>5-к. Квартира, 34 м кв</p><h2>10 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>6-к. Квартира, 34 м кв</p><h2>15 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>5 900 000₽</h2></div>
+          <div class="sugg__text"><p>{{offer.name}}}</p><h2>{{ offer.price }}₽</h2></div>
         </router-link>
       </div>
     </div>
   </section>
+  <TheFooter></TheFooter>
 </template>
 
 <script>

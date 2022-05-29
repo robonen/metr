@@ -203,18 +203,29 @@ h1, h2, h3, h4, h5, h6 {
 .user__info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     margin-right: 5%;
 }
 
 .user__logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 20px;
+    border-radius: 50%;
     width: 200px;
     height: 200px;
     padding-left: 20%;
+    margin: 0 auto;
+
+    background: url("@/assets/images/1.1.jpg") center
+    no-repeat;
+    background-size: cover;
+}
+
+.user__logo > img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 50%;
+    width: 120%;
+    height: 100%;
 }
 
 .username {
@@ -223,18 +234,18 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
-.user__stat {
-    display: flex;
-    flex-direction: row;
-    margin: 2% 0 2% 5%;
-}
+/*.user__stat {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    margin: 2% 0 2% 5%;*/
+/*}*/
 
-.stars {
-    display: flex;
-    flex-direction: row;
-    margin-left: 5%;
-    padding-bottom: 1%;
-}
+/*.stars {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    margin-left: 5%;*/
+/*    padding-bottom: 1%;*/
+/*}*/
 
 .user__hrefs {
     display: flex;

@@ -60,21 +60,12 @@
     <div class="main">
       <div class="user__info">
         <div class="user__logo">
-          <img src="../assets/images/userlogo.png" alt="">
+<!--          <img src="@/assets/images/1.1.jpg" alt="">-->
         </div>
         <div class="username">
           <h3>Виктория</h3>
         </div>
-        <div class="user__stat">
-          <div class="stat"><h3>5</h3></div>
-          <div class="stars">
-            <img src="../assets/images/star.png" alt="">
-            <img src="../assets/images/star.png" alt="">
-            <img src="../assets/images/star.png" alt="">
-            <img src="../assets/images/star.png" alt="">
-            <img src="../assets/images/star.png" alt="">
-          </div>
-        </div>
+        <rating-stars></rating-stars>
         <div class="user__hrefs">
           <div class="aboutme">
             <a @click.prevent="activeTab = 'profile-about'">
@@ -93,25 +84,62 @@
 <!--          <div class="favorites">-->
 <!--            <a href="#"><h2>Избранное</h2></a>-->
 <!--          </div>-->
+          <div class="add__notice">
+            <a @click.prevent="logout">
+              <h2>Выйти из аккаунта</h2>
+            </a>
+          </div>
         </div>
       </div>
       <component :is="activeTab"></component>
     </div>
   </div>
+  <TheFooter></TheFooter>
 </template>
 
 <script>
 import ProfileAbout from "@/components/ProfileAbout.vue";
 import ProfileMyOffers from "@/components/ProfileMyOffers.vue";
 import ProfileAddOffer from "@/components/ProfileAddOffer.vue";
+import RatingStars from "@/components/RatingStars.vue";
+import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
+import {mapGetters} from "vuex";
+
 export default {
-  components: {ProfileAbout, ProfileMyOffers, ProfileAddOffer},
+  components: {
+    TheFooter,
+    ProfileAbout,
+    ProfileMyOffers,
+    ProfileAddOffer,
+    RatingStars,
+    TheHeader,
+  },
   data ()  {
-    return { activeTab : "profile-about" }
+    return {
+      activeTab : "profile-about"
+    }
+  },
+  computed: {
+    ...mapGetters({
+        user: 'user',
+    }),
+    name() {
+      return this.user.first_name
+          ? this.user.first_name
+          : `Пользователь #${this.user.id}`;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push('/');
+      });
+    }
   }
 }
 </script>>
 
 <style scoped>
-@import url("@/assets/css/profile.css");
+  @import url("@/assets/css/profile.css");
 </style>

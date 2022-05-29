@@ -91,18 +91,19 @@
             <div class="username">
               <h2>Виктория</h2>
             </div>
-            <div class="host__stat">
-              <div class="stat">
-                <h3>5</h3>
-              </div>
-              <div class="stars">
-                <img src="@/assets/images/star.png" alt="">
-                <img src="@/assets/images/star.png" alt="">
-                <img src="@/assets/images/star.png" alt="">
-                <img src="@/assets/images/star.png" alt="">
-                <img src="@/assets/images/star.png" alt="">
-              </div>
-            </div>
+<!--            <div class="host__stat">-->
+<!--              <div class="stat">-->
+<!--                <h3>5</h3>-->
+<!--              </div>-->
+<!--              <div class="stars">-->
+<!--                <img src="@/assets/images/star.png" alt="">-->
+<!--                <img src="@/assets/images/star.png" alt="">-->
+<!--                <img src="@/assets/images/star.png" alt="">-->
+<!--                <img src="@/assets/images/star.png" alt="">-->
+<!--                <img src="@/assets/images/star.png" alt="">-->
+<!--              </div>-->
+<!--            </div>-->
+            <rating-stars></rating-stars>
             <div class="number">
               <a href="#" class="favoritextinf"><h5>Показать номер</h5></a>
             </div>
@@ -144,13 +145,14 @@
             <div class="rewiew__comment">
               <h5>Очень приятный владелец, все чисто и опрятно</h5>
             </div>
-            <div class="rewiew__stars">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-            </div>
+<!--            <div class="rewiew__stars">-->
+<!--               <img src="@/assets/images/star.png" alt="">-->
+<!--               <img src="@/assets/images/star.png" alt="">-->
+<!--               <img src="@/assets/images/star.png" alt="">-->
+<!--               <img src="@/assets/images/star.png" alt="">-->
+<!--               <img src="@/assets/images/star.png" alt="">-->
+<!--            </div>-->
+            <rating-stars></rating-stars>
           </div>
           <div class="review">
             <div class="review__avatar">
@@ -159,13 +161,14 @@
             <div class="rewiew__comment">
               <h5>Очень приятный владелец, все чисто и опрятно</h5>
             </div>
-            <div class="rewiew__stars">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-            </div>
+<!--            <div class="rewiew__stars">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--            </div>-->
+            <rating-stars></rating-stars>
           </div>
           <div class="review">
             <div class="review__avatar">
@@ -174,23 +177,29 @@
             <div class="rewiew__comment">
               <h5>Очень приятный владелец, все чисто и опрятно</h5>
             </div>
-            <div class="rewiew__stars">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-              <img src="@/assets/images/star.png" alt="">
-            </div>
+<!--            <div class="rewiew__stars">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--              <img src="@/assets/images/star.png" alt="">-->
+<!--            </div>-->
+            <rating-stars></rating-stars>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  <TheFooter></TheFooter>
 </template>
 
 <script>
+import RatingStars from "@/components/RatingStars.vue";
+import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
+
 export default {
+  components: {TheFooter, TheHeader, RatingStars},
   name: "OfferView"
 }
 </script>

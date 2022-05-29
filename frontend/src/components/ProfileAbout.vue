@@ -2,9 +2,9 @@
   <div class="about__user">
     <div class="about__title"><h2>Обо мне</h2></div>
     <div class="about__images">
-      <img src="@/assets/images/metr.svg" alt="">
-      <img src="@/assets/images/metr.svg" alt="">
-      <img src="@/assets/images/metr.svg" alt="">
+      <img src="@/assets/images/1.1.jpg" alt="">
+      <img src="@/assets/images/1.1.jpg" alt="">
+      <img src="@/assets/images/1.1.jpg" alt="">
     </div>
     <div class="about_describtions">
       <h3>Занимаюсь продажей квартир более 10 лет.</h3>
@@ -26,6 +26,15 @@ export default {
 
 .about__images {
   width: 105%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1%;
+}
+
+.about__images > img {
+  width: 296px;
+  height: 204px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
