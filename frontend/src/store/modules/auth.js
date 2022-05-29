@@ -8,6 +8,11 @@ export const state = {
 };
 
 export const actions = {
+    async registration({ commit }, { email, password }) {
+        const { data: user } = await authService.registration(email, password);
+        commit('SET_USER', user.data);
+        commit('SET_TOKEN', user.token);
+    },
     async login({ commit }, { email, password }) {
         const { data: user } = await authService.login(email, password);
         commit('SET_USER', user.data);

@@ -1,61 +1,5 @@
 <template>
-  <header class="header">
-    <div class="container">
-      <div class="header__table">
-        <div class="header__image">
-          <router-link to="/" class="nav__link" href="#">
-          </router-link>
-        </div>
-        <div class="header__block">
-          <div class="header__block__content">
-            <img src="@/assets/images/location.png" alt="">
-            <a class="nav__link_tomsk" href="#">Томск</a>
-          </div>
-        </div>
-        <div class="header__block">
-          <div class="header__block__contenttop">
-            <router-link to="/catalog" class="nav__link" href="#">каталог</router-link>
-          </div>
-          <div class="header__block__contentdown">
-            <a class="nav__link" href="#">блог</a>
-          </div>
-        </div>
-        <div class="header__block">
-          <div class="header__block__contenttop">
-            <a class="nav__link" href="#">контакты</a>
-          </div>
-          <div class="header__block__contentdown">
-            <a class="nav__link" href="#">помощь</a>
-          </div>
-        </div>
-        <div class="header__search">
-          <div class="search">
-            <div class="search__block">
-
-            </div>
-            <div class="search__img">
-              <a class="nav__link" href="#">
-                <img src="@/assets/images/search.jpg" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="header__contacts">
-          <div class="header__contacts__imgtop">
-            <a class="nav__link" href="#">
-              <img src="@/assets/images/tell.jpg" alt="">
-            </a>
-          </div>
-          <div class="header__contacts__img">
-            <a class="nav__link" href="#">
-              <img src="@/assets/images/user.jpg" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
+  <the-header></the-header>
   <div class="intro">
     <div class="main">
       <div class="user__info">
@@ -63,7 +7,7 @@
 <!--          <img src="@/assets/images/1.1.jpg" alt="">-->
         </div>
         <div class="username">
-          <h3>Виктория</h3>
+          <h3>{{ name }}</h3>
         </div>
         <rating-stars></rating-stars>
         <div class="user__hrefs">

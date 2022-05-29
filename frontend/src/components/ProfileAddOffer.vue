@@ -50,12 +50,51 @@
         <input type="text" size="40" v-model.trim="offer.description">
       </div>
     </div>
+    <button @click="addOffer">Отправить</button>
   </div>
 </template>
 
 <script>
+import offerService from "@/services/offer";
+
 export default {
-  name: "ProfileAbout"
+  name: "ProfileAbout",
+  data() {
+    return this.initialState()
+  },
+  methods: {
+    async addOffer() {
+      const data = { ...this.offer };
+
+      data.user_id = this.$store.getters.user.id;
+
+      offerService
+          .add(data)
+          .then(() =>  this.reset())
+          .catch(() => alert('Ошибка!'));
+    },
+    initialState() {
+      return {
+        offer: {
+          name: '',
+          type: 'Flat',
+          location: '',
+          price: '',
+          rooms: 1,
+          space: '',
+          description: '',
+          is_group: 1,
+        },
+        files: [],
+      }
+    },
+    reset() {
+      Object.assign(this.$data, this.initialState());
+    },
+    previewFiles(event) {
+      this.files.push(event.target.files[0]);
+    },
+  }
 }
 </script>
 

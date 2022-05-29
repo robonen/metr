@@ -52,7 +52,9 @@ export default {
       });
     },
     registration() {
-
+      this.$store.dispatch('registration', this.credentials).then(() => {
+        this.$router.push('/profile');
+      });
     },
     auth() {
       if (this.authForm)
@@ -60,6 +62,10 @@ export default {
       else
         this.registration();
     }
+  },
+  mounted() {
+    if (this.$store.getters.userAuthenticated)
+      this.$router.push('/profile');
   }
 }
 </script>>

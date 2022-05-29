@@ -1,60 +1,5 @@
 <template>
-  <header class="header">
-    <div class="container">
-      <div class="header__table">
-        <div class="header__image">
-          <router-link to="/" class="nav__link" href="#">
-          </router-link>
-        </div>
-        <div class="header__block">
-          <div class="header__block__content">
-            <img src="~@/assets/images/location.png" alt="">
-            <a class="nav__link_tomsk" href="#">Томск</a>
-          </div>
-        </div>
-        <div class="header__block">
-          <div class="header__block__contenttop">
-            <a class="nav__link" href="#">каталог</a>
-          </div>
-          <div class="header__block__contentdown">
-            <a class="nav__link" href="#">блог</a>
-          </div>
-        </div>
-        <div class="header__block">
-          <div class="header__block__contenttop">
-            <a class="nav__link" href="#">контакты</a>
-          </div>
-          <div class="header__block__contentdown">
-            <a class="nav__link" href="#">помощь</a>
-          </div>
-        </div>
-        <div class="header__search">
-          <div class="search">
-            <div class="search__block">
-
-            </div>
-            <div class="search__img">
-              <a class="nav__link" href="#">
-                <img src="@/assets/images/search.jpg" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="header__contacts">
-          <div class="header__contacts__imgtop">
-            <a class="nav__link" href="#">
-              <img src="@/assets/images/tell.jpg" alt="">
-            </a>
-          </div>
-          <div class="header__contacts__img">
-            <router-link to="/auth" class="nav__link" href="#" id="user">
-              <img src="@/assets/images/user.jpg" alt="">
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <the-header></the-header>
 
   <section class="suggestions">
     <div class="suggestions__title">
@@ -137,8 +82,20 @@
 </template>
 
 <script>
+import TheHeader from "../components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
+
 export default {
-  name: "CatalogView"
+  name: "CatalogView",
+  components: {TheHeader, TheFooter},
+  data ()  {
+    return { offers: [] }
+  },
+  async mounted() {
+    const requests = await fetch('http://tusur.tk:9080/api/offers');
+    const offers = await requests.json();
+    this.offers = offers.data;
+  }
 }
 </script>
 
