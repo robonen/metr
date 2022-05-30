@@ -29,7 +29,7 @@ const router = createRouter({
       component: ProfileView
     },
     {
-      path: '/offer',
+      path: '/catalog/:id',
       name: 'offer',
       component: OfferView
     },

@@ -35,18 +35,6 @@
             <div class="username">
               <h2>Виктория</h2>
             </div>
-<!--            <div class="host__stat">-->
-<!--              <div class="stat">-->
-<!--                <h3>5</h3>-->
-<!--              </div>-->
-<!--              <div class="stars">-->
-<!--                <img src="@/assets/images/star.png" alt="">-->
-<!--                <img src="@/assets/images/star.png" alt="">-->
-<!--                <img src="@/assets/images/star.png" alt="">-->
-<!--                <img src="@/assets/images/star.png" alt="">-->
-<!--                <img src="@/assets/images/star.png" alt="">-->
-<!--              </div>-->
-<!--            </div>-->
             <rating-stars></rating-stars>
             <div class="number">
               <a href="#" class="favoritextinf"><h5>Показать номер</h5></a>
@@ -66,15 +54,17 @@
           <h2>О квартире</h2>
         </div>
         <div class="about__adv__info">
-          <h4>Кол-во комнат: 4</h4>
-          <h4>Общая площадь: 78.4 м²</h4>
-          <h4>Площадь кухни: 12 м²</h4>
-          <h4>Этаж: 20</h4>
+          <h4>Тип: {{ offerType }}</h4>
+
+          <h4>Адрес: {{ offer.location }}</h4>
+
+          <h4>Кол-во комнат: {{ offer.rooms }}</h4>
+
+          <h4>Общая площадь: {{ offer.space }} м²</h4>
         </div>
         <div class="about__adv__descriptions">
-          <p>Продается 4х комнатная квартира, уютная, светлая, теплая. Натяжные потолки,
-            ламинат, деревянные евроокна, два кондиционера. Теплые полы в туалете, ванной,
-            кухне, частично в прихожей. Хороший вид из окна.</p>
+          <h2>Описание</h2>
+          <p>{{ offer.description }}</p>
         </div>
       </div>
       <div class="reviews">
@@ -89,13 +79,6 @@
             <div class="rewiew__comment">
               <h5>Очень приятный владелец, все чисто и опрятно</h5>
             </div>
-<!--            <div class="rewiew__stars">-->
-<!--               <img src="@/assets/images/star.png" alt="">-->
-<!--               <img src="@/assets/images/star.png" alt="">-->
-<!--               <img src="@/assets/images/star.png" alt="">-->
-<!--               <img src="@/assets/images/star.png" alt="">-->
-<!--               <img src="@/assets/images/star.png" alt="">-->
-<!--            </div>-->
             <rating-stars></rating-stars>
           </div>
           <div class="review">
@@ -105,13 +88,6 @@
             <div class="rewiew__comment">
               <h5>Очень приятный владелец, все чисто и опрятно</h5>
             </div>
-<!--            <div class="rewiew__stars">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--            </div>-->
             <rating-stars></rating-stars>
           </div>
           <div class="review">
@@ -121,13 +97,6 @@
             <div class="rewiew__comment">
               <h5>Очень приятный владелец, все чисто и опрятно</h5>
             </div>
-<!--            <div class="rewiew__stars">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--              <img src="@/assets/images/star.png" alt="">-->
-<!--            </div>-->
             <rating-stars></rating-stars>
           </div>
         </div>
