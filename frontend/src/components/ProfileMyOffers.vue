@@ -24,8 +24,27 @@
 </template>
 
 <script>
+import offerService from "@/services/offer";
+import ProfileAddOffer from "@/components/ProfileAddOffer.vue";
+
 export default {
-  name: "ProfileAbout"
+  name: "ProfileAbout",
+  components: {ProfileAddOffer},
+  data() {
+    return {
+      activeId: null,
+      offers: [],
+    };
+  },
+  methods: {
+    async loadOffers() {
+      const offers = await offerService.allUserOffers();
+      this.offers = offers.data.data;
+    }
+  },
+  async mounted() {
+    await this.loadOffers();
+  }
 }
 </script>
 
@@ -44,7 +63,6 @@ export default {
 
 .about__images {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin-top: 1%;
 }

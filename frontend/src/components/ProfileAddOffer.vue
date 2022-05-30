@@ -1,6 +1,6 @@
 <template>
   <div class="about__user">
-    <div class="about__title"><h2>Добавить объявление</h2></div>
+    <div class="about__title"><h2>{{ editable ? 'Изменить' : 'Добавить' }} объявление</h2></div>
     <div class="about__images">
       <div class="image__load" v-for="(img, i) in 3" :key="i">
         <input type="file" @change="previewFiles">
@@ -50,7 +50,7 @@
         <input type="text" size="40" v-model.trim="offer.description">
       </div>
     </div>
-    <button @click="addOffer">Отправить</button>
+    <button @click="action">Отправить</button>
   </div>
 </template>
 
@@ -59,30 +59,49 @@ import offerService from "@/services/offer";
 
 export default {
   name: "ProfileAbout",
+  emits: ['updated'],
+  props: {
+    editData: {
+      type: Object,
+      default: null,
+    },
+    editable: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return this.initialState()
   },
   methods: {
-    async addOffer() {
+    async action() {
       const data = { ...this.offer };
 
       data.user_id = this.$store.getters.user.id;
 
-      offerService
-          .add(data)
-          .then(() =>  this.reset())
-          .catch(() => alert('Ошибка!'));
+      if (!this.editable)
+        offerService
+            .add(data)
+            .then(() =>  this.reset())
+            .catch(() => alert('Ошибка создания объявления!'));
+      else
+        offerService
+            .update(this.editData.id, data)
+            .then(() =>  this.$emit('updated'))
+            .catch(() => alert('Ошибка изменения объявления!'));
     },
     initialState() {
+      const ed = this.editData;
+
       return {
         offer: {
-          name: '',
-          type: 'Flat',
-          location: '',
-          price: '',
-          rooms: 1,
-          space: '',
-          description: '',
+          name: ed ? ed.name : '',
+          type: ed ? ed.type : 'Flat',
+          location: ed ? ed.location : '',
+          price: ed ? ed.price : '',
+          rooms: ed ? ed.rooms : 1,
+          space: ed ? ed.space : '',
+          description: ed ? ed.description : '',
           is_group: 1,
         },
         files: [],
@@ -94,6 +113,11 @@ export default {
     previewFiles(event) {
       this.files.push(event.target.files[0]);
     },
+  },
+  watch: {
+    editData() {
+      this.reset();
+    }
   }
 }
 </script>
@@ -103,7 +127,6 @@ export default {
 .about__load{
   position: absolute;
   width: 100%;
-
   margin-left: 40%;
 }
 

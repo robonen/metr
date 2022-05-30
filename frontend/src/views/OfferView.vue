@@ -6,11 +6,11 @@
         <div class="adv__main">
           <div class="adv__main__title">
             <div class="mtitle">
-              <h2>4-к. квартира, 78,4 м², 20/28 эт.</h2>
+              <h2>{{ offer.name }}</h2>
             </div>
             <div class="mprice__fav">
               <div class="price">
-                <h2>40 610 000 ₽</h2>
+                <h2>{{ offer.price }} ₽</h2>
               </div>
 <!--              <a href="#" class="favoritext"><div class="favorite">-->
 <!--                <h4>Добавить в избранное</h4>-->
@@ -110,10 +110,34 @@
 import RatingStars from "@/components/RatingStars.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import offerService from "@/services/offer";
 
 export default {
+  name: "OfferView",
   components: {TheFooter, TheHeader, RatingStars},
-  name: "OfferView"
+  data() {
+    return {
+      offer: {}
+    };
+  },
+  computed: {
+    offerType() {
+      return {
+        'Flat': 'Квартира',
+        'House': 'Дом',
+        'Land': 'Участок',
+      }[this.offer.type];
+    }
+  },
+  async mounted() {
+    const id = this.$route.params.id;
+
+    if (id === undefined)
+      return this.$router.back();
+
+    const resp = await offerService.getById(id);
+    this.offer = resp.data.data;
+  }
 }
 </script>
 
