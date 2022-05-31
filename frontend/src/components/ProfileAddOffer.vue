@@ -3,13 +3,14 @@
     <div class="about__title"><h2>{{ editable ? 'Изменить' : 'Добавить' }} объявление</h2></div>
     <div class="about__images">
       <div class="image__load" v-for="(img, i) in 3" :key="i">
-        <input type="file" @change="previewFiles">
-        <img src="@/assets/images/image_load.png" alt="">
-        <div class="about__load">
-          <img src="@/assets/images/upload_log.svg" alt="">
-        </div>
-        <div class="about__delete">
+        <input v-if="!files[i]" type="file" @change="uploadFile">
+        <div v-else class="about__delete" @click="deletePhoto(i)">
           <img src="@/assets/images/delete_log.svg" alt="">
+        </div>
+        <img v-if="!files[i]" src="@/assets/images/image_load.png" alt="">
+        <img v-else :src="url(files[i].file)" alt="">
+        <div v-if="!files[i]" class="about__load">
+          <img src="@/assets/images/upload_log.svg" alt="">
         </div>
       </div>
     </div>
@@ -61,6 +62,7 @@
 
 <script>
 import offerService from "@/services/offer";
+import { getURL } from "@/services/images";
 
 export default {
   name: "ProfileAbout",
@@ -81,17 +83,16 @@ export default {
   methods: {
     async action() {
       const data = { ...this.offer };
-
-      data.user_id = this.$store.getters.user.id;
+      const files = [ ...this.files ];
 
       if (!this.editable)
         offerService
-            .add(data)
+            .add(data, files)
             .then(() =>  this.reset())
             .catch(() => alert('Ошибка создания объявления!'));
       else
         offerService
-            .update(this.editData.id, data)
+            .update(this.editData.id, data, files)
             .then(() =>  this.$emit('updated'))
             .catch(() => alert('Ошибка изменения объявления!'));
     },
@@ -101,7 +102,7 @@ export default {
       return {
         offer: {
           name: ed ? ed.name : '',
-          type: ed ? ed.type : 'Flat',
+          type: ed ? ed.type : 'Studio',
           location: ed ? ed.location : '',
           price: ed ? ed.price : '',
           rooms: ed ? ed.rooms : 1,
@@ -109,15 +110,29 @@ export default {
           description: ed ? ed.description : '',
           is_group: 1,
         },
-        files: [],
+        files: ed ? ed.images : [],
       }
     },
     reset() {
       Object.assign(this.$data, this.initialState());
     },
-    previewFiles(event) {
-      this.files.push(event.target.files[0]);
+    async uploadFile(event) {
+      const file = event.target.files[0];
+
+      const res = await offerService.uploadImage(file);
+
+      this.files.push(res.data.data);
     },
+    async deletePhoto(index) {
+      const id = this.files[index].id;
+
+      offerService.deleteImage(id);
+
+      this.files.splice(index, 1);
+    },
+    url(path) {
+      return getURL(path);
+    }
   },
   watch: {
     editData() {
@@ -171,6 +186,7 @@ export default {
   position: absolute;
   top: 2%;
   right: 2%;
+  cursor: pointer;
 }
 
 .about__delete > img{

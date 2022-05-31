@@ -4,9 +4,10 @@
       <h2>Мои объявления</h2>
     </div>
     <div class="my__offer">
-      <div class="about__images" @click="activeId = i" v-for="(img, i) in offers" :key="i">
+      <div class="about__images" @click="activeId = i" v-for="(offer, i) in offers" :key="i">
         <div class="image__load">
-          <img src="@/assets/images/image_load.png" alt="">
+          <img v-if="offer.images.length === 0" src="@/assets/images/image_load.png" alt="">
+          <img v-else :src="url(offer.images[0].file)" alt="">
         </div>
       </div>
       <profile-add-offer v-if="activeId !== null" :edit-data="offers[activeId]" editable @updated="loadOffers"></profile-add-offer>
@@ -26,6 +27,7 @@
 <script>
 import offerService from "@/services/offer";
 import ProfileAddOffer from "@/components/ProfileAddOffer.vue";
+import { getURL } from "@/services/images";
 
 export default {
   name: "ProfileAbout",
@@ -40,6 +42,9 @@ export default {
     async loadOffers() {
       const offers = await offerService.allUserOffers();
       this.offers = offers.data.data;
+    },
+    url(path) {
+      return getURL(path);
     }
   },
   async mounted() {

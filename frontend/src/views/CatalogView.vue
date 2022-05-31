@@ -68,7 +68,9 @@
     <div class="suggestions__images">
       <div class="podlozhka" v-for="offer in offers">
         <router-link :to="`/catalog/${offer.id}`" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
+          <div class="sugg__img" :style="{
+            'background-image': url(offer.images.length !== 0 ? offer.images[0].file : '@/assets/images/1.jpg')
+          }"></div>
           <div class="sugg__text"><p>{{offer.name}}</p><h2>{{ offer.price }}₽</h2></div>
         </router-link>
       </div>
@@ -81,6 +83,8 @@
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import CatalogType from "@/components/CatalogType.vue";
+import offerService from "@/services/offer";
+import { getURL } from "@/services/images";
 
 export default {
   name: "CatalogView",
@@ -91,10 +95,14 @@ export default {
       componentForm: ''
     }
   },
+  methods: {
+    url(path) {
+      return `url(${getURL(path)})`;
+    }
+  },
   async mounted() {
-    const requests = await fetch('http://tusur.tk:9080/api/offers');
-    const offers = await requests.json();
-    this.offers = offers.data;
+    const offers = await offerService.all();
+    this.offers = offers.data.data;
   }
 }
 </script>
