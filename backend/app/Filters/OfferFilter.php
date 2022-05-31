@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-use App\Enums\OrderTypesEnum;
+use App\Enums\RoomTypesEnum;
 use Illuminate\Database\Eloquent\Builder;
 
 class OfferFilter extends QueryFilter
@@ -13,7 +13,7 @@ class OfferFilter extends QueryFilter
      */
     protected function type(string $type): Builder
     {
-        if (OrderTypesEnum::tryFrom($type) !== null)
+        if (RoomTypesEnum::tryFrom($type) !== null)
             return $this->builder->where('type', $type);
 
         return $this->builder;

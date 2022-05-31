@@ -20,6 +20,7 @@ return new class extends Migration
 
             $table
                 ->foreignId('offer_id')
+                ->nullable()
                 ->constrained()
                 ->onUpdate('cascade');
         });

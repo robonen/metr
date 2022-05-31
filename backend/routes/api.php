@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,9 +39,13 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('users')->group(function() {
         Route::get('', [UserController::class, 'index']);
         Route::put('', [UserController::class, 'update']);
+        Route::get('offers', [OfferController::class, 'allByUser']);
         Route::apiResource('feedback', FeedbackController::class);
     });
 
+    Route::apiResource('offers', OfferController::class);
+
+    Route::post('offers/images', [UploadImageController::class, 'uploadCatalog']);
+    Route::delete('offers/images/{id}', [UploadImageController::class, 'deleteCatalog']);
 });
 
-Route::apiResource('offers', OfferController::class);
