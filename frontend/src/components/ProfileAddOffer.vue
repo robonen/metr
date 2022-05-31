@@ -39,7 +39,12 @@
       </div>
       <div class="descriptions__flats">
         <h4>Кол-во комнат:</h4>
-        <input type="text" size="40" v-model.number="offer.rooms">
+        <select v-model="offer.rooms">
+          <option value="Studio" selected>Студия</option>
+          <option value="Room1">1 комната</option>
+          <option value="Room2">2 комнаты</option>
+          <option value="Room3More">3 комнаты и более</option>
+        </select>
       </div>
       <div class="descriptions__square">
         <h4>Площадь:</h4>

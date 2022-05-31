@@ -2,9 +2,9 @@
   <div class="about__user">
     <div class="about__title"><h2>Обо мне</h2></div>
     <div class="about__images">
-      <img src="@/assets/images/1.1.jpg" alt="">
-      <img src="@/assets/images/1.1.jpg" alt="">
-      <img src="@/assets/images/1.1.jpg" alt="">
+      <img src="@/assets/images/user_standart.png" alt="">
+      <img src="@/assets/images/user_standart.png" alt="">
+      <img src="@/assets/images/user_standart.png" alt="">
     </div>
     <div class="about_describtions">
       <h4>Имя Фамилия: </h4><h3>{{ name }}</h3>

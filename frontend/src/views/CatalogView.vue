@@ -34,23 +34,35 @@
 <!--        </div>-->
 <!--      </div>-->
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">WordPress</a>
+        <li><a href="#">Тип</a>
           <ul>
-            <li><a href="#">Themes</a></li>
-            <li><a href="#">Plugins</a></li>
-            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Квартира</a></li>
+            <li><a href="#">Участок</a></li>
+            <li><a href="#">Дом</a></li>
           </ul>
         </li>
-        <li><a href="#">Graphic Design</a>
+        <li><a href="#">Площадь</a>
           <ul>
-            <li><input type="text"></li>
-            <li><input type="text"></li>
+            <li><b href="#">От: <input type="text"></b></li>
+            <li><b href="#">До: <input type="text"></b></li>
+            <li><a href="#">Сортировать</a></li>
           </ul>
         </li>
-        <li><a href="#">Inspiration</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#">Кол - во комнат</a>
+          <ul>
+            <li><a href="#">Студия</a></li>
+            <li><a href="#">1 комната</a></li>
+            <li><a href="#">2 комнаты</a></li>
+            <li><a href="#">3 комнаты и более</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Цена</a>
+          <ul>
+            <li><b href="#">От: <input type="text"></b></li>
+            <li><b href="#">До: <input type="text"></b></li>
+            <li><a href="#">Сортировать</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
     <div class="suggestions__images">

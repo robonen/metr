@@ -18,7 +18,9 @@
                     <a class="odnushka__price" href="#">1 580 000₽</a>
                 </div>
                 <div class="intro__btn">
-                    <a class="intro__button" href="#">посмотреть</a>
+                    <router-link to="/catalog/1" class="intro__button" href="#">
+                      посмотреть
+                    </router-link>
                 </div>
             </div>
     </div>
@@ -36,24 +38,24 @@
         </div>
     </section>
     
-    <section class="suggestions">
-        <div class="suggestions__title">
-            <h3 class="newhome">Интересные предложения</h3>
-        </div>
-        <div class="suggestions__images">
+<!--    <section class="suggestions">-->
+<!--        <div class="suggestions__title">-->
+<!--            <h3 class="newhome">Интересные предложения</h3>-->
+<!--        </div>-->
+<!--        <div class="suggestions__images">-->
 
-            <div class="podlozhka" v-for="offer in offers">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>{{offer.name}}}</p><h2>{{ offer.price }}₽</h2></div>
-            </div>
+<!--            <div class="podlozhka" v-for="offer in offers">-->
+<!--                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>-->
+<!--                <div class="sugg__text"><p>{{offer.name}}</p><h2>{{ offer.price }}₽</h2></div>-->
+<!--            </div>-->
 
-        </div>
-        <div class="afterword">
-            <p class="afterword">Это подборка лучших вариантов, найденных</p>
-            <p class="afterword">нашими сотрудниками.</p>
-            <p class="after__afterword">Вдруг ваше будущее жилье здесь?</p>
-        </div>
-    </section>
+<!--        </div>-->
+<!--        <div class="afterword">-->
+<!--            <p class="afterword">Это подборка лучших вариантов, найденных</p>-->
+<!--            <p class="afterword">нашими сотрудниками.</p>-->
+<!--            <p class="after__afterword">Вдруг ваше будущее жилье здесь?</p>-->
+<!--        </div>-->
+<!--    </section>-->
     <TheFooter></TheFooter>
 </template>
 
