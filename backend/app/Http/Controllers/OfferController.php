@@ -36,7 +36,7 @@ class OfferController extends Controller
      */
     public function show(int $id): OfferResource
     {
-        return new OfferResource(Offer::with('images')->findOrFail($id));
+        return new OfferResource(Offer::with(['images', 'user'])->findOrFail($id));
     }
 
     /**
@@ -71,8 +71,18 @@ class OfferController extends Controller
      */
     public function update(UpdateOfferRequest $request, int $id): void
     {
-        $offer = Offer::findOrFail($id);
-        $offer->update($request->validated());
+        $data = $request->validated();
+        $images = $data['images'];
+
+        $offer = auth()->user()->offers()->findOrFail($id);
+        $offer->update($data);
+
+        foreach ($images as $image)
+        {
+            $offer_photo = OfferPhoto::findOrFail($image['id']);
+            $offer_photo->offer_id = $offer->id;
+            $offer_photo->save();
+        }
     }
 
     /**

@@ -8,6 +8,5 @@ enum OrderTypesEnum: string
 
     case HOUSE = 'House';
     case FLAT = 'Flat';
-    case GUEST_HOUSE = 'Guest';
-    case HOTEL = 'Hotel';
+    case Land = 'Land';
 }
