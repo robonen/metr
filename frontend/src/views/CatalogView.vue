@@ -6,33 +6,6 @@
       <h3 class="newhome">Найти недвижимость</h3>
     </div>
     <div class="parametrs__block">
-<!--      <div class="parametrs">-->
-<!--        <div class="prm">-->
-<!--          <div class="prm__inside">-->
-<!--            <div class="prm__text"><h2>Квартира</h2></div>-->
-<!--            <a @click.prevent="componentForm = 'type'"><img src="@/assets/images/arrow.png" alt=""></a>-->
-<!--          </div>-->
-<!--          <catalog-type v-if="componentForm === 'type'"></catalog-type>-->
-<!--        </div>-->
-<!--        <div class="prm">-->
-<!--          <div class="prm__inside">-->
-<!--            <div class="prm__text"><h2>Купить</h2></div>-->
-<!--            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="prm">-->
-<!--          <div class="prm__inside">-->
-<!--            <div class="prm__text"><h2>Комнаты</h2></div>-->
-<!--            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="prm">-->
-<!--          <div class="prm__inside">-->
-<!--            <div class="prm__text"><h2>Цена</h2></div>-->
-<!--            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
       <ul>
         <li><a href="#">Тип</a>
           <ul>
@@ -84,7 +57,8 @@
         <router-link :to="`/catalog/${offer.id}`" class="nav__link" href="#">
           <div class="sugg__img" :style="{
             'background-image': url(offer.images.length !== 0 ? offer.images[0].file : '@/assets/images/1.jpg')
-          }"></div>
+          }">
+          </div>
           <div class="sugg__text"><p>{{offer.name}}</p><h2>{{ offer.price }}₽</h2></div>
         </router-link>
       </div>
@@ -139,16 +113,24 @@ export default {
       const min = this[range].min;
       const max = this[range].max;
 
+      const minName = 'start' + paramName;
+      const maxName = 'end' + paramName;
+
+      this.sortParams = this.sortParams.filter((e) => e.name !== minName);
+      this.sortParams = this.sortParams.filter((e) => e.name !== maxName);
+
       if (min)
-        this.addSortParam('start' + paramName, min, true);
-      else
-        this.addSortParam('start' + paramName, min);
+        this.sortParams.push({ name: minName, value: min });
 
       if (max)
-        this.addSortParam('end' + paramName, max, true);
-      else
-        this.addSortParam('end' + paramName, max);
-    }
+        this.sortParams.push({ name: maxName, value: max });
+
+      await this.reloadOffers();
+    },
+    async reloadOffers() {
+      const offers = await offerService.filter(this.sortParams);
+      this.offers = offers.data.data;
+    },
   },
   async mounted() {
     const offers = await offerService.all();

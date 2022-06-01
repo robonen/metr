@@ -1,11 +1,11 @@
 <template>
   <div class="about__user">
     <div class="about__title"><h2>Обо мне</h2></div>
-    <div class="about__images">
-      <img src="@/assets/images/user_standart.png" alt="">
-      <img src="@/assets/images/user_standart.png" alt="">
-      <img src="@/assets/images/user_standart.png" alt="">
-    </div>
+<!--    <div class="about__images">-->
+<!--      <img src="@/assets/images/user_standart.png" alt="">-->
+<!--      <img src="@/assets/images/user_standart.png" alt="">-->
+<!--      <img src="@/assets/images/user_standart.png" alt="">-->
+<!--    </div>-->
     <div class="about_describtions">
       <h4>Имя Фамилия: </h4><h3>{{ name }}</h3>
       <h4>Почта: </h4><h3>{{ user.email }}</h3>
@@ -34,6 +34,8 @@ export default {
 .about__user {
   display: flex;
   flex-direction: column;
+
+  width: 888px;
 }
 
 .about__images {
@@ -54,6 +56,6 @@ export default {
 }
 
 .about_describtions {
-  margin-top: 5%;
+  margin-top: 2%;
 }
 </style>
