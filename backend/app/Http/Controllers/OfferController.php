@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\OfferFilter;
 use App\Http\Requests\StoreOfferRequest;
 use App\Http\Requests\UpdateOfferRequest;
 use App\Http\Resources\OfferResource;
 use App\Models\Offer;
+use App\Models\OfferPhoto;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class OfferController extends Controller
@@ -13,11 +15,17 @@ class OfferController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \App\Filters\OfferFilter $filters
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(): AnonymousResourceCollection
+    public function index(OfferFilter $filters): AnonymousResourceCollection
     {
-        return OfferResource::collection(Offer::all());
+        return OfferResource::collection(
+            Offer::filter($filters)
+                ->latest()
+                ->with('images')
+                ->get()
+        );
     }
 
     /**
@@ -28,8 +36,7 @@ class OfferController extends Controller
      */
     public function show(int $id): OfferResource
     {
-        $offer = Offer::findOrFail($id);
-        return new OfferResource($offer);
+        return new OfferResource(Offer::with(['images', 'user'])->findOrFail($id));
     }
 
     /**
@@ -40,7 +47,19 @@ class OfferController extends Controller
      */
     public function store(StoreOfferRequest $request): OfferResource
     {
-        return new OfferResource(Offer::create($request->validated()));
+        $data = $request->validated();
+        $images = $data['images'];
+
+        $offer = auth()->user()->offers()->create($data);
+
+        foreach ($images as $image)
+        {
+            $offer_photo = OfferPhoto::findOrFail($image['id']);
+            $offer_photo->offer_id = $offer->id;
+            $offer_photo->save();
+        }
+
+        return new OfferResource($offer);
     }
 
     /**
@@ -52,8 +71,18 @@ class OfferController extends Controller
      */
     public function update(UpdateOfferRequest $request, int $id): void
     {
-        $offer = Offer::findOrFail($id);
-        $offer->update($request->validated());
+        $data = $request->validated();
+        $images = $data['images'];
+
+        $offer = auth()->user()->offers()->findOrFail($id);
+        $offer->update($data);
+
+        foreach ($images as $image)
+        {
+            $offer_photo = OfferPhoto::findOrFail($image['id']);
+            $offer_photo->offer_id = $offer->id;
+            $offer_photo->save();
+        }
     }
 
     /**
@@ -66,5 +95,17 @@ class OfferController extends Controller
     {
         $offer = Offer::findOrFail($id);
         $offer->delete();
+    }
+
+    public function allByUser(): AnonymousResourceCollection
+    {
+        return OfferResource::collection(
+            auth()
+            ->user()
+            ->offers()
+            ->latest()
+            ->with('images')
+            ->get()
+        );
     }
 }

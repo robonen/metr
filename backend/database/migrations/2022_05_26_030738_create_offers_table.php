@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\OrderTypesEnum;
+use App\Enums\RoomTypesEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,8 +19,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('type', OrderTypesEnum::values());
-            $table->decimal('price');
-            $table->unsignedSmallInteger('rooms');
+            $table->decimal('price', 15);
+            $table->enum('rooms', RoomTypesEnum::values());
             $table->decimal('space');
             $table->string('yandex_mark')->nullable();
             $table->string('location');
