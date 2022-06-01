@@ -58,7 +58,7 @@
 
           <h4>Адрес: {{ offer.location }}</h4>
 
-          <h4>Кол-во комнат: {{ offer.rooms }}</h4>
+          <h4>Кол-во комнат: {{ roomType }}</h4>
 
           <h4>Общая площадь: {{ offer.space }} м²</h4>
         </div>
@@ -127,6 +127,14 @@ export default {
         'House': 'Дом',
         'Land': 'Участок',
       }[this.offer.type];
+    },
+    roomType() {
+      return {
+        'Studio': 'Студия',
+        'Room1': '1 комната',
+        'Room2': '2 комнаты',
+        'Room3More': '3 комнаты и больше',
+      }[this.offer.rooms]
     }
   },
   async mounted() {

@@ -36,31 +36,45 @@
       <ul>
         <li><a href="#">Тип</a>
           <ul>
-            <li><a href="#">Квартира</a></li>
-            <li><a href="#">Участок</a></li>
-            <li><a href="#">Дом</a></li>
+            <li @click="addSortParam('type', 'Flat')">
+              <a href="#" :class="isSelected('type', 'Flat')">Квартира</a>
+            </li>
+            <li @click="addSortParam('type', 'Land')">
+              <a href="#" :class="isSelected('type', 'Land')">Участок</a>
+            </li>
+            <li @click="addSortParam('type', 'House')">
+              <a href="#" :class="isSelected('type', 'House')">Дом</a>
+            </li>
           </ul>
         </li>
         <li><a href="#">Площадь</a>
           <ul>
-            <li><b href="#">От: <input type="text"></b></li>
-            <li><b href="#">До: <input type="text"></b></li>
-            <li><a href="#">Сортировать</a></li>
+            <li><b href="#">От: <input type="text" v-model.trim="spaceParams.min"></b></li>
+            <li><b href="#">До: <input type="text" v-model.trim="spaceParams.max"></b></li>
+            <li @click="addRangeSortParam('spaceParams', 'Space')"><a href="#">Сортировать</a></li>
           </ul>
         </li>
         <li><a href="#">Кол - во комнат</a>
           <ul>
-            <li><a href="#">Студия</a></li>
-            <li><a href="#">1 комната</a></li>
-            <li><a href="#">2 комнаты</a></li>
-            <li><a href="#">3 комнаты и более</a></li>
+            <li @click="addSortParam('rooms', 'Studio')">
+              <a href="#" :class="isSelected('rooms', 'Studio')">Студия</a>
+            </li>
+            <li @click="addSortParam('rooms', 'Room1')">
+              <a href="#" :class="isSelected('rooms', 'Room1')">1 комната</a>
+            </li>
+            <li @click="addSortParam('rooms', 'Room2')">
+              <a href="#" :class="isSelected('rooms', 'Room2')">2 комнаты</a>
+            </li>
+            <li @click="addSortParam('rooms', 'Room3More')">
+              <a href="#" :class="isSelected('rooms', 'Room3More')">3 комнаты и более</a>
+            </li>
           </ul>
         </li>
         <li><a href="#">Цена</a>
           <ul>
-            <li><b href="#">От: <input type="text"></b></li>
-            <li><b href="#">До: <input type="text"></b></li>
-            <li><a href="#">Сортировать</a></li>
+            <li><b href="#">От: <input type="text" v-model.trim="priceParams.min"></b></li>
+            <li><b href="#">До: <input type="text" v-model.trim="priceParams.max"></b></li>
+            <li @click="addRangeSortParam('priceParams', 'Price')"><a href="#">Сортировать</a></li>
           </ul>
         </li>
       </ul>
@@ -92,12 +106,48 @@ export default {
   data ()  {
     return {
       offers: [],
-      componentForm: ''
+      sortParams: [],
+      spaceParams: {
+        min: null,
+        max: null,
+      },
+      priceParams: {
+        min: null,
+        max: null,
+      },
     }
   },
   methods: {
     url(path) {
       return `url(${getURL(path)})`;
+    },
+    isSelected(name, value) {
+      return this.sortParams.some((e) => e.name === name && e.value === value) ? 'parametrs__block__selected' : '';
+    },
+    addSortParam(name, value, isRange = false) {
+      const element = this.sortParams.findIndex((e) => e.name === name && e.value === value);
+
+      if (~element && !isRange) {
+        this.sortParams.splice(element, 1);
+        return;
+      }
+
+      this.sortParams = this.sortParams.filter((e) => e.name !== name);
+      this.sortParams.push({ name, value });
+    },
+    addRangeSortParam(range, paramName) {
+      const min = this[range].min;
+      const max = this[range].max;
+
+      if (min)
+        this.addSortParam('start' + paramName, min, true);
+      else
+        this.addSortParam('start' + paramName, min);
+
+      if (max)
+        this.addSortParam('end' + paramName, max, true);
+      else
+        this.addSortParam('end' + paramName, max);
     }
   },
   async mounted() {
