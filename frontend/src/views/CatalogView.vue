@@ -1,6 +1,5 @@
 <template>
   <the-header></the-header>
-
   <section class="suggestions">
     <div class="suggestions__title">
       <h3 class="newhome">Найти недвижимость</h3>
@@ -98,18 +97,21 @@ export default {
     isSelected(name, value) {
       return this.sortParams.some((e) => e.name === name && e.value === value) ? 'parametrs__block__selected' : '';
     },
-    addSortParam(name, value, isRange = false) {
+     async addSortParam(name, value) {
       const element = this.sortParams.findIndex((e) => e.name === name && e.value === value);
 
-      if (~element && !isRange) {
+      if (~element) {
         this.sortParams.splice(element, 1);
+        await this.reloadOffers();
         return;
       }
 
       this.sortParams = this.sortParams.filter((e) => e.name !== name);
       this.sortParams.push({ name, value });
+
+      await this.reloadOffers();
     },
-    addRangeSortParam(range, paramName) {
+    async addRangeSortParam(range, paramName) {
       const min = this[range].min;
       const max = this[range].max;
 

@@ -19,13 +19,15 @@
             </div>
           </div>
           <div class="adv__main__images">
-            <div class="main__image">
-              <a href="#"><img src="../assets/images/offer1.png" alt=""></a>
-            </div>
+            <Transition>
+              <div class="main__image" v-if="offer.images" :style="{ 'background-image': imagePreview }">
+<!--                <a href="#"><img v-if="offer.images" :src="imagePreview" alt=""></a>-->
+              </div>
+            </Transition>
             <div class="other__images">
-              <a href="#"><img src="../assets/images/offer3.png" alt=""></a>
-              <a href="#"><img src="../assets/images/offer2.png" alt=""></a>
-              <a href="#"><img src="../assets/images/offer4.png" alt=""></a>
+              <a href="#" v-for="(image, i) in offer.images" :key="i" @click.prevent @mouseover="imagePreviewId = i">
+                <img :src="url(image.file)" alt="">
+              </a>
             </div>
           </div>
         </div>
@@ -33,18 +35,18 @@
         <div class="adv__host">
           <div class="adv__host__about__user">
             <div class="username">
-              <h2>Виктория</h2>
+              <h2>{{ ownerName }}</h2>
             </div>
             <rating-stars></rating-stars>
-            <div class="number">
+            <div class="number" @click.prevent="showPhone">
               <a href="#" class="favoritextinf"><h5>Показать номер</h5></a>
             </div>
 <!--            <div class="message">-->
 <!--              <a href="#" class="favoritextinf"><h5>Написать владельцу</h5></a>-->
 <!--            </div>-->
           </div>
-          <div class="userlogo">
-            <img src="@/assets/images/userlogosmall.png" alt="">
+          <div class="userlogo" :style="{'background-image': ownerPhoto}">
+<!--            <img :src="ownerPhoto" alt="">-->
           </div>
         </div>
       </div>
@@ -72,32 +74,14 @@
           <h2>Отзывы</h2>
         </div>
         <div class="reviews__blocks">
-          <div class="review">
+          <div v-if="offer?.user?.feedback" class="review" v-for="(review, i) in offer.user.feedback" :key="i">
             <div class="review__avatar">
               <img src="@/assets/images/forcomment.png" alt="">
             </div>
             <div class="rewiew__comment">
-              <h5>Очень приятный владелец, все чисто и опрятно</h5>
+              <h5>{{ review.comment }}</h5>
             </div>
-            <rating-stars></rating-stars>
-          </div>
-          <div class="review">
-            <div class="review__avatar">
-              <img src="@/assets/images/forcomment.png" alt="">
-            </div>
-            <div class="rewiew__comment">
-              <h5>Очень приятный владелец, все чисто и опрятно</h5>
-            </div>
-            <rating-stars></rating-stars>
-          </div>
-          <div class="review">
-            <div class="review__avatar">
-              <img src="@/assets/images/forcomment.png" alt="">
-            </div>
-            <div class="rewiew__comment">
-              <h5>Очень приятный владелец, все чисто и опрятно</h5>
-            </div>
-            <rating-stars></rating-stars>
+            <rating-stars :totalStars="review.rating"></rating-stars>
           </div>
         </div>
       </div>
@@ -111,12 +95,14 @@ import RatingStars from "@/components/RatingStars.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import offerService from "@/services/offer";
+import { getURL } from "@/services/images";
 
 export default {
   name: "OfferView",
   components: {TheFooter, TheHeader, RatingStars},
   data() {
     return {
+      imagePreviewId: 0,
       offer: {}
     };
   },
@@ -135,6 +121,32 @@ export default {
         'Room2': '2 комнаты',
         'Room3More': '3 комнаты и больше',
       }[this.offer.rooms]
+    },
+    imagePreview() {
+      return this.offer.images.length !== 0
+          ? `url(${getURL(this.offer.images[this.imagePreviewId].file)})`
+          : 'url(@/assets/images/offer1.png)';
+    },
+    ownerName() {
+      if (!this.offer.user) return;
+
+      const user = this.offer.user;
+      return user.first_name ?? `Пользователь #${user.id}`;
+    },
+    ownerPhoto() {
+      if (!this.offer.user) return;
+
+      const user = this.offer.user;
+      return user.photo ? `url(${getURL(user.photo)})` : 'url(/src/assets/images/user_standart.png)';
+    },
+  },
+  methods: {
+    url(path) {
+      return getURL(path);
+    },
+    showPhone() {
+      const phone = this.offer.user.phone ?? 'отсутствует';
+      alert(`Номер пользователя: ${phone}`);
     }
   },
   async mounted() {
@@ -151,4 +163,14 @@ export default {
 
 <style scoped>
   @import url("@/assets/css/offer.css");
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

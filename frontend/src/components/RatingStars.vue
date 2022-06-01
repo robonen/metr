@@ -1,19 +1,21 @@
 <template>
   <div class="user__stat">
-    <div class="stat"><h3>5</h3></div>
+    <div class="stat"><h3>{{ totalStars }}</h3></div>
     <div class="stars">
-      <img src="../assets/images/star.png" alt="">
-      <img src="../assets/images/star.png" alt="">
-      <img src="../assets/images/star.png" alt="">
-      <img src="../assets/images/star.png" alt="">
-      <img src="../assets/images/star.png" alt="">
+      <img src="../assets/images/star.png" alt="" v-for="(star, i) in totalStars" :key="i">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "RatingStars"
+  name: "RatingStars",
+  props: {
+    totalStars: {
+      type: Number,
+      default: 5,
+    }
+  }
 }
 </script>
 

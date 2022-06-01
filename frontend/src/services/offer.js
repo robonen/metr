@@ -19,6 +19,13 @@ export const OfferService = {
         const resp = await api.get('/users/offers');
         return resp;
     },
+    async filter(filters) {
+        const queryParamsObj = filters.reduce((obj, item) => (obj[item.name] = item.value, obj) ,{});
+        const resp = await api.get('/offers', {
+            params: queryParamsObj,
+        });
+        return resp;
+    },
     async getById(id) {
         const resp = await api.get(`/offers/${id}`);
         return resp;
