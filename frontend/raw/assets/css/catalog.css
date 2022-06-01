@@ -1,6 +1,6 @@
 /* Fonts */
 
-@import url("@/assets/fonts/StapelS/style.css");
+@import url("../../fonts/StapelS/style.css");
 
 body {
     margin: 0;
@@ -27,11 +27,156 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+
 /* Container */
 .container {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
+}
+
+
+/* Header */
+
+.header {
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header__table {
+    width: 1052px;
+    height: 100px;
+    border: 2px solid white;
+    margin: 50px auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    color: white;
+    
+}
+
+.header__image {
+    width: 140px;
+    height: 96px;
+    margin: 0 auto;
+    
+    background: url("../images/metr.svg") center
+    no-repeat;
+    background-size: cover;
+    border-right: 2px solid white;
+}
+
+.header__block {
+    width: 145px;
+    height: 96px;
+    margin: 0 auto;
+    border-right: 2px solid white;
+}
+
+.header__search {
+    width: 426px;
+    height: 96px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    border-right: 2px solid white;
+}
+
+.search {
+    width: 340px;
+    height: 40px;
+    padding-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.search__block {
+    width: 300px;
+    height: 40px;
+    margin: 0;
+    padding-top: 20px;
+
+    background: white;
+    border: 1px solid black;
+}
+
+.search__img {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding-top: 2px;
+}
+
+.header__contacts {
+    width: 46px;
+    height: 96px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.header__contacts__imgtop {
+    width: 48px;
+    height: 48px;
+    padding-top: 5px;
+    border-bottom: 2px solid white;
+}
+
+.header__contacts__img {
+    width: 48px;
+    height: 48px;
+    padding-top: 5px;
+}
+
+.header__block__content {
+    width: 70px;
+    height: 20px;
+    margin: 0 auto;
+    padding-top: 35px;
+}
+
+.header__block__contenttop {
+    width: 145px;
+    height: 48px;
+    margin: 0 auto;
+    border-bottom: 2px solid white;
+}
+
+.header__block__contentbott {
+    width: 145px;
+    height: 48px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.nav__link_tomsk {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    
+}
+
+.nav__link:hover, .nav__link_tomsk:hover {
+    color: #389EEB;
+    transition: color .2s linear;
 }
 
 /* Intro */
@@ -44,7 +189,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 250px;
 
     background-image: linear-gradient(to top, rgb(124, 173, 201, 1), rgb(94, 196, 242, 0.3)), url(
-    "@/assets/images/intro.jpg");
+ "../images/intro.jpg");
     background-size: cover;
 }
 
@@ -169,7 +314,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 590px;
     border: 1px solid black;
     background-image: linear-gradient(to top, rgb(124, 173, 201, 0.6), rgb(94, 196, 242, 0.2)), url(
-    "@/assets/images/video.jpg");
+ "../images/video.jpg");
     background-size: cover;
 
 }
@@ -199,25 +344,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .suggestions__title {
     font-size: 25px;
-    /*padding-left: 10%;*/
-    margin: 0% 12%;
+    padding-left: 10%;
 }
 
 .suggestions__images {
     margin: 2% 12%;
     display: flex;
-    /*justify-content: space-between;*/
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
 }
 
 .sugg__img {
-    width: 100%;
-    height: 100%;
+    flex-basis: 30%;
+    height: 460px;
     margin: 4% 0 1% auto;
     background: linear-gradient(to top, rgba(1, 80, 140, 1), rgba(37, 45, 45, 0.6));
-    background-repeat: no-repeat;
-    background-size: cover;
     transition: transform .2s linear;
 }
 
@@ -235,6 +377,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gradient {
+    
 	display: inline-block;
 	position: relative;    
 	line-height: 0;
@@ -255,12 +398,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .podlozhka {
     position: relative;
-    width: 369px;
-    height: 460px;
-
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
 }
 
 .podlozhka:hover .sugg__img {
@@ -312,9 +449,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .parametrs__block {
     display: flex;
-    justify-content: space-between;
-    align-items: left;
-    margin: 2% 12%;
+    flex-direction: column;
 }
 
 .parametrs {
@@ -337,6 +472,140 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 10px;
     background-color: rgba(26, 137, 201, 1);
     border-radius: 5px;
+}
+
+.prm__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin: 2% 40% 0 10%;
+}
+
+.prm__flat__block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: color .2s linear;
+    border-radius: 5px;
+}
+
+.prm__flat__block:hover {
+    background-color: #779fbd;
+}
+
+.prm__flat__block:hover .prm__img{
+    opacity: 1;
+}
+
+.prm__down {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 2;
+    margin-top: 252px;
+    margin-left: 70px;
+}
+
+.prm__flat {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 130px;
+    height: 110px;
+    z-index: 2;
+    margin-top: 305px;
+    margin-left: 190px;
+    background-color: rgba(26, 137, 201, 1);
+    border-radius: 5px;
+    padding: 1px 1px 0 2px;
+}
+
+.prm__img {
+    width: 5%;
+    height: 5%;
+    margin-right: 10%;
+    opacity: 0;
+}
+
+.prm__flat a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    margin-right: 10%;
+}
+
+.prm__buy {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 305px;
+    margin-left: 444px;
+    width: 150px;
+    z-index: 2;
+    background-color: rgba(26, 137, 201, 1);
+    border-radius: 5px;
+    padding: 1px 2px 0 2px;
+}
+
+.prm__buy a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    margin-right: 10%;
+}
+
+.prm__komnaty {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 305px;
+    margin-left: 698px;
+    z-index: 2;
+    background-color: rgba(26, 137, 201, 1);
+    border-radius: 5px;
+    padding: 1px 2px 0 2px;
+}
+
+.prm__komnaty a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    margin-right: 10%;
+}
+
+.prm__price {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 305px;
+    margin-left: 952px;
+    width: 220px;
+    height: 32px;
+    z-index: 2;
+    background-color: rgba(26, 137, 201, 1);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.prm__price a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    margin-right: 10%;
+}
+
+.price {
+    width: 50%;
+    border-radius: 5px;
+    margin-right: 1%;
+    border-color: rgb(173, 172, 172);
+    box-shadow: none;
+    background-color: #8bb9dd;
+    border: none;
 }
 
 .prm__inside {
@@ -394,66 +663,3 @@ h1, h2, h3, h4, h5, h6 {
     height: 48px;
     margin: 0;
 }
-
-
-
-
-.parametrs__block ul {
-
-    padding:0;
-    margin:0;
-    list-style: none;
-    position: relative;
-}
-
-/* применяем inline-block позиционирование к элементам навигации */
-.parametrs__block ul li {
-
-    margin: 0px 28px 0 0;
-    display:inline-block;
-    border-radius: 0px;
-    background-color: #1A89C9;
-}
-
-/* стилизуем ссылки */
-.parametrs__block a {
-
-    display:block;
-    padding:0 20px;
-    color:#FFF;
-    font-size:20px;
-    line-height: 60px;
-    text-decoration:none;
-}
-
-.parametrs__block b {
-    display:block;
-    padding:0 20px;
-}
-
-/* изменяем цвет фона при наведении курсора */
-.parametrs__block a:hover, .parametrs__block__selected {
-    background-color: #000000;
-}
-
-.parametrs__block ul ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-}
-
-/* отображаем выпадающий список при наведении */
-.parametrs__block ul li:hover > ul {
-    display:inherit;
-}
-
-/* первый уровень выпадающего списка */
-.parametrs__block ul ul li {
-    z-index: 100;
-    min-width: 200px;
-    float:none;
-    display:list-item;
-    position: relative;
-}
-
-

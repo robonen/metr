@@ -1,58 +1,5 @@
 <template>
-    <header class="header">
-        <div class="container">
-            <div class="header__table">
-                <div class="header__image"></div>
-                <div class="header__block">
-                    <div class="header__block__content">
-                        <img src="@/assets/images/location.png" alt="">
-                        <a class="nav__link_tomsk" href="#"> Томск</a>
-                    </div>
-                </div>
-                <div class="header__block">
-                    <div class="header__block__contenttop">
-                      <router-link to="/catalog" class="nav__link" href="#" id="catalog">
-                          каталог
-                      </router-link>
-                    </div>
-
-                    <div class="header__block__contentdown">
-                        <a class="nav__link" href="#">блог</a>
-                    </div>
-                </div>
-                <div class="header__block">
-                    <div class="header__block__contenttop">
-                        <a class="nav__link" href="#">контакты</a>
-                    </div>
-                    <div class="header__block__contentdown">
-                        <a class="nav__link" href="#">помощь</a>
-                    </div>
-                </div>
-                <div class="header__search">
-                    <div class="search">
-                        <input class="search__block">
-                        <div class="search__img">
-                            <a class="nav__link" href="#">
-                                <img src="@/assets/images/search.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="header__contacts">
-                    <div class="header__contacts__imgtop">
-                        <a class="nav__link" href="#">
-                            <img src="@/assets/images/tell.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="header__contacts__img">
-                        <router-link to="/auth" class="nav__link" href="#" id="user">
-                            <img src="@/assets/images/user.jpg" alt="">
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+  <the-header></the-header>
 
     <div class="intro">
             <div class="container">
@@ -71,7 +18,9 @@
                     <a class="odnushka__price" href="#">1 580 000₽</a>
                 </div>
                 <div class="intro__btn">
-                    <a class="intro__button" href="#">посмотреть</a>
+                    <router-link to="/catalog/1" class="intro__button" href="#">
+                      посмотреть
+                    </router-link>
                 </div>
             </div>
     </div>
@@ -89,69 +38,34 @@
         </div>
     </section>
     
-    <section class="suggestions">
-        <div class="suggestions__title">
-            <h3 class="newhome">Интересные предложения</h3>
-        </div>
-        <div class="suggestions__images">
+<!--    <section class="suggestions">-->
+<!--        <div class="suggestions__title">-->
+<!--            <h3 class="newhome">Интересные предложения</h3>-->
+<!--        </div>-->
+<!--        <div class="suggestions__images">-->
 
-            <div class="podlozhka" v-for="offer in offers">
-                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-                <div class="sugg__text"><p>{{offer.name}}}</p><h2>{{ offer.price }}₽</h2></div>
-            </div>
+<!--            <div class="podlozhka" v-for="offer in offers">-->
+<!--                <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>-->
+<!--                <div class="sugg__text"><p>{{offer.name}}</p><h2>{{ offer.price }}₽</h2></div>-->
+<!--            </div>-->
 
-        </div>
-        <div class="afterword">
-            <p class="afterword">Это подборка лучших вариантов, найденных</p>
-            <p class="afterword">нашими сотрудниками.</p>
-            <p class="after__afterword">Вдруг ваше будущее жилье здесь?</p>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="header__table">
-            <div class="header__image">
-            </div>
-            <div class="header__block">
-                <div class="header__block__content">
-                    <img src="assets/images/location.png" alt="">
-                    <a class="nav__link_tomsk" href="#">Томск</a>
-                </div>
-            </div>
-            <div class="header__block">
-                <div class="header__block__contenttop">
-                    <a class="nav__link" href="#">вконтакте</a>
-                </div>
-                <div class="header__block__contentbott">
-                    <a class="nav__link" href="#">инстаграм</a>
-                </div>
-            </div>
-            <div class="header__block">
-                <div class="header__block__contenttop">
-                    <a class="nav__link" href="#">фэйсбук</a>
-                </div>
-                <div class="header__block__contentdown">
-                    <a class="nav__link" href="#">твиттер</a>
-                </div>
-            </div>
-            <div class="footer__search">
-            
-            </div>
-            <div class="footer__contacts">
-                <div class="footer__contacts__imgtop">
-                    <a class="nav__link" href="#">+7-495-291-32-01</a>
-                </div>
-                <div class="footer__contacts__img">
-                    <a class="nav__link" href="#">вконтакте</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
+<!--        </div>-->
+<!--        <div class="afterword">-->
+<!--            <p class="afterword">Это подборка лучших вариантов, найденных</p>-->
+<!--            <p class="afterword">нашими сотрудниками.</p>-->
+<!--            <p class="after__afterword">Вдруг ваше будущее жилье здесь?</p>-->
+<!--        </div>-->
+<!--    </section>-->
+    <TheFooter></TheFooter>
 </template>
 
 <script>
+import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
+
+
 export default {
+  components: {TheHeader, TheFooter},
   data ()  {
     return { offers: [] }
   },

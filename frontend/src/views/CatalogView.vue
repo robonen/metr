@@ -1,137 +1,143 @@
 <template>
-  <header class="header">
-    <div class="container">
-      <div class="header__table">
-        <div class="header__image">
-          <router-link to="/" class="nav__link" href="#">
-          </router-link>
-        </div>
-        <div class="header__block">
-          <div class="header__block__content">
-            <img src="~@/assets/images/location.png" alt="">
-            <a class="nav__link_tomsk" href="#">Томск</a>
-          </div>
-        </div>
-        <div class="header__block">
-          <div class="header__block__contenttop">
-            <a class="nav__link" href="#">каталог</a>
-          </div>
-          <div class="header__block__contentdown">
-            <a class="nav__link" href="#">блог</a>
-          </div>
-        </div>
-        <div class="header__block">
-          <div class="header__block__contenttop">
-            <a class="nav__link" href="#">контакты</a>
-          </div>
-          <div class="header__block__contentdown">
-            <a class="nav__link" href="#">помощь</a>
-          </div>
-        </div>
-        <div class="header__search">
-          <div class="search">
-            <div class="search__block">
-
-            </div>
-            <div class="search__img">
-              <a class="nav__link" href="#">
-                <img src="@/assets/images/search.jpg" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="header__contacts">
-          <div class="header__contacts__imgtop">
-            <a class="nav__link" href="#">
-              <img src="@/assets/images/tell.jpg" alt="">
-            </a>
-          </div>
-          <div class="header__contacts__img">
-            <router-link to="/auth" class="nav__link" href="#" id="user">
-              <img src="@/assets/images/user.jpg" alt="">
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
+  <the-header></the-header>
   <section class="suggestions">
     <div class="suggestions__title">
       <h3 class="newhome">Найти недвижимость</h3>
     </div>
     <div class="parametrs__block">
-      <div class="parametrs">
-        <div class="prm">
-          <div class="prm__inside">
-            <div class="prm__text"><h2>Квартира</h2></div>
-            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>
-          </div>
-        </div>
-        <div class="prm">
-          <div class="prm__inside">
-            <div class="prm__text"><h2>Купить</h2></div>
-            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>
-          </div>
-        </div>
-        <div class="prm">
-          <div class="prm__inside">
-            <div class="prm__text"><h2>Комнаты</h2></div>
-            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>
-          </div>
-        </div>
-        <div class="prm">
-          <div class="prm__inside">
-            <div class="prm__text"><h2>Цена</h2></div>
-            <a href="#"><img src="@/assets/images/arrow.png" alt=""></a>
-          </div>
-        </div>
-      </div>
+      <ul>
+        <li><a href="#">Тип</a>
+          <ul>
+            <li @click="addSortParam('type', 'Flat')">
+              <a href="#" :class="isSelected('type', 'Flat')">Квартира</a>
+            </li>
+            <li @click="addSortParam('type', 'Land')">
+              <a href="#" :class="isSelected('type', 'Land')">Участок</a>
+            </li>
+            <li @click="addSortParam('type', 'House')">
+              <a href="#" :class="isSelected('type', 'House')">Дом</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Площадь</a>
+          <ul>
+            <li><b href="#">От: <input type="text" v-model.trim="spaceParams.min"></b></li>
+            <li><b href="#">До: <input type="text" v-model.trim="spaceParams.max"></b></li>
+            <li @click="addRangeSortParam('spaceParams', 'Space')"><a href="#">Сортировать</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Кол - во комнат</a>
+          <ul>
+            <li @click="addSortParam('rooms', 'Studio')">
+              <a href="#" :class="isSelected('rooms', 'Studio')">Студия</a>
+            </li>
+            <li @click="addSortParam('rooms', 'Room1')">
+              <a href="#" :class="isSelected('rooms', 'Room1')">1 комната</a>
+            </li>
+            <li @click="addSortParam('rooms', 'Room2')">
+              <a href="#" :class="isSelected('rooms', 'Room2')">2 комнаты</a>
+            </li>
+            <li @click="addSortParam('rooms', 'Room3More')">
+              <a href="#" :class="isSelected('rooms', 'Room3More')">3 комнаты и более</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Цена</a>
+          <ul>
+            <li><b href="#">От: <input type="text" v-model.trim="priceParams.min"></b></li>
+            <li><b href="#">До: <input type="text" v-model.trim="priceParams.max"></b></li>
+            <li @click="addRangeSortParam('priceParams', 'Price')"><a href="#">Сортировать</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
     <div class="suggestions__images">
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>2-к. Квартира, 34 м кв</p><h2>2 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/1.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>4 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/3.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>1-к. Квартира, 34 м кв</p><h2>1 900 000₽</h2></div>
-        </router-link>>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/4.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>5-к. Квартира, 34 м кв</p><h2>10 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>6-к. Квартира, 34 м кв</p><h2>15 900 000₽</h2></div>
-        </router-link>
-      </div>
-      <div class="podlozhka">
-        <router-link to="/offer" class="nav__link" href="#">
-          <div class="sugg__img"><a class="gradient" href="#"><img src="@/assets/images/6.jpg" alt=""></a></div>
-          <div class="sugg__text"><p>3-к. Квартира, 34 м кв</p><h2>5 900 000₽</h2></div>
+      <div class="podlozhka" v-for="offer in offers">
+        <router-link :to="`/catalog/${offer.id}`" class="nav__link" href="#">
+          <div class="sugg__img" :style="{
+            'background-image': url(offer.images.length !== 0 ? offer.images[0].file : '@/assets/images/1.jpg')
+          }">
+          </div>
+          <div class="sugg__text"><p>{{offer.name}}</p><h2>{{ offer.price }}₽</h2></div>
         </router-link>
       </div>
     </div>
   </section>
+  <TheFooter></TheFooter>
 </template>
 
 <script>
+import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
+import CatalogType from "@/components/CatalogType.vue";
+import offerService from "@/services/offer";
+import { getURL } from "@/services/images";
+
 export default {
-  name: "CatalogView"
+  name: "CatalogView",
+  components: {TheHeader, TheFooter,CatalogType},
+  data ()  {
+    return {
+      offers: [],
+      sortParams: [],
+      spaceParams: {
+        min: null,
+        max: null,
+      },
+      priceParams: {
+        min: null,
+        max: null,
+      },
+    }
+  },
+  methods: {
+    url(path) {
+      return `url(${getURL(path)})`;
+    },
+    isSelected(name, value) {
+      return this.sortParams.some((e) => e.name === name && e.value === value) ? 'parametrs__block__selected' : '';
+    },
+     async addSortParam(name, value) {
+      const element = this.sortParams.findIndex((e) => e.name === name && e.value === value);
+
+      if (~element) {
+        this.sortParams.splice(element, 1);
+        await this.reloadOffers();
+        return;
+      }
+
+      this.sortParams = this.sortParams.filter((e) => e.name !== name);
+      this.sortParams.push({ name, value });
+
+      await this.reloadOffers();
+    },
+    async addRangeSortParam(range, paramName) {
+      const min = this[range].min;
+      const max = this[range].max;
+
+      const minName = 'start' + paramName;
+      const maxName = 'end' + paramName;
+
+      this.sortParams = this.sortParams.filter((e) => e.name !== minName);
+      this.sortParams = this.sortParams.filter((e) => e.name !== maxName);
+
+      if (min)
+        this.sortParams.push({ name: minName, value: min });
+
+      if (max)
+        this.sortParams.push({ name: maxName, value: max });
+
+      await this.reloadOffers();
+    },
+    async reloadOffers() {
+      const offers = await offerService.filter(this.sortParams);
+      this.offers = offers.data.data;
+    },
+  },
+  async mounted() {
+    const offers = await offerService.all();
+    this.offers = offers.data.data;
+  }
 }
 </script>
 
