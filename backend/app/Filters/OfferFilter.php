@@ -79,4 +79,16 @@ class OfferFilter extends QueryFilter
 
         return $this->builder;
     }
+
+    /**
+     * @param string $word
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function search(string $word): Builder
+    {
+        if (!empty(trim($word)))
+            return $this->builder->where('name', 'LIKE', "%{$word}%");
+
+        return $this->builder;
+    }
 }
