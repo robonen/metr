@@ -22,8 +22,8 @@ export default {
   computed: {
     ...mapGetters({ user: 'user' }),
     name() {
-      return this.user.last_name && this.user.first_name && this.user.middle_name
-          ? `${this.user.last_name} ${this.user.first_name} ${this.user.middle_name}`
+      return this.user.last_name && this.user.first_name
+          ? `${this.user.last_name} ${this.user.first_name} ${this.user.middle_name ?? ''}`
           : 'Не указано';
     }
   }

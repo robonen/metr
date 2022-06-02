@@ -133,10 +133,23 @@ export default {
       const offers = await offerService.filter(this.sortParams);
       this.offers = offers.data.data;
     },
+    async addSearchParam(value) {
+      if (!value || !value.q) {
+        this.sortParams = this.sortParams.filter((e) => e.name !== 'search');
+        this.reloadOffers();
+        return;
+      }
+
+      await this.addSortParam('search', value.q);
+    }
   },
   async mounted() {
-    const offers = await offerService.all();
-    this.offers = offers.data.data;
+    await this.addSearchParam(this.$route.query);
+  },
+  watch: {
+    '$route.query'(value) {
+      this.addSearchParam(value);
+    }
   }
 }
 </script>

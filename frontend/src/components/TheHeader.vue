@@ -57,7 +57,20 @@
 
 <script>
 export default {
-  name: "TheHeader"
+  name: "TheHeader",
+  data() {
+    return {
+      query: '',
+    };
+  },
+  methods: {
+    search() {
+      this.$router.push({
+        path: '/catalog',
+        query: { q: this.query },
+      })
+    }
+  },
 }
 </script>
 
