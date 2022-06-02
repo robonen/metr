@@ -75,9 +75,9 @@
         </div>
         <div class="reviews__blocks">
           <div v-if="offer?.user?.feedback" class="review" v-for="(review, i) in offer.user.feedback" :key="i">
-            <div class="review__avatar">
-              <img src="@/assets/images/forcomment.png" alt="">
-            </div>
+<!--            <div class="review__avatar">-->
+<!--              <img src="@/assets/images/forcomment.png" alt="">-->
+<!--            </div>-->
             <div class="rewiew__comment">
               <h5>{{ review.comment }}</h5>
             </div>

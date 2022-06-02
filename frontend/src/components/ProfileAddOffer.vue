@@ -20,7 +20,7 @@
     <div class="about__describtions">
       <div class="descriptions__name">
         <h4>Название для объявления:</h4>
-        <input type="text" size="40" v-model.trim="offer.name">
+        <input type="text" size="40" placeholder="Пример: Просторная квартира на Елисеевке" v-model.trim="offer.name">
       </div>
       <div class="descriptions__name">
         <h4>Тип:</h4>
@@ -32,11 +32,11 @@
       </div>
       <div class="descriptions__address">
         <h4>Адрес:</h4>
-        <input type="text" size="40" v-model.trim="offer.location">
+        <input type="text" size="40" placeholder="Пример: Комарино 12, д. 3" v-model.trim="offer.location">
       </div>
       <div class="descriptions__price">
         <h4>Цена:</h4>
-        <input type="text" size="40" v-model.number="offer.price">
+        <input type="text" size="40" placeholder="Пример: '1200000'" v-model.number="offer.price">
       </div>
       <div class="descriptions__flats">
         <h4>Кол-во комнат:</h4>
@@ -49,11 +49,12 @@
       </div>
       <div class="descriptions__square">
         <h4>Площадь:</h4>
-        <input type="text" size="40" v-model.number="offer.space">
+        <input type="text" size="40" placeholder="Пример: '45'" v-model.number="offer.space">
       </div>
       <div class="descriptions__text">
         <h4>Описание:</h4>
-        <input type="text" size="40" v-model.trim="offer.description">
+<!--        <input type="text" size="40" v-model.trim="offer.description">-->
+        <textarea placeholder="Описание" class="descriptions__textarea" v-model.trim="offer.description"></textarea>
       </div>
     </div>
     <button @click="action">Отправить</button>
@@ -263,12 +264,28 @@ export default {
   margin-top: 1%;
 }
 
+.descriptions__textarea{
+  background-color: rgb(201, 233, 252);
+  border-radius: 5px;
+  border-color: white;
+  box-shadow: none;
+  border: 1px solid rgb(83, 110, 136);
+
+  width: 100%;
+  height: 100px;
+
+
+  font-size: 0.8em;
+}
+
 .about__describtions input {
   background-color: rgb(201, 233, 252);
   border-radius: 5px;
   border-color: white;
   box-shadow: none;
   border: 1px solid rgb(83, 110, 136);
+
+  font-size: 0.8em;
 }
 
 .about__describtions h4 {
@@ -278,5 +295,6 @@ export default {
 .descriptions__text input {
   width: 100%;
   height: 100px;
+
 }
 </style>
