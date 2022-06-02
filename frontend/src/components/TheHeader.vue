@@ -30,10 +30,8 @@
         </div>
         <div class="header__search">
           <div class="search">
-            <div class="search__block">
-
-            </div>
-            <div class="search__img">
+            <input text="" class="search__block" placeholder="Поиск" v-model.trim="query" @keydown.enter="search">
+            <div class="search__img" @click.prevent="search">
               <a class="nav__link" href="#">
                 <img src="@/assets/images/search.jpg" alt="">
               </a>
@@ -62,6 +60,7 @@ export default {
   name: "TheHeader"
 }
 </script>
+
 
 <style scoped>
 /* Container */
@@ -137,7 +136,8 @@ export default {
   width: 300px;
   height: 40px;
   margin: 0;
-  padding-top: 20px;
+
+  font-size: 1em;
 
   background: white;
   border: 1px solid black;
