@@ -144,13 +144,17 @@ export default {
     }
   },
   async mounted() {
+    if (this.$store.getters.userAuthenticated) {
+      this.$router.push('/profile');
+      return;
+    }
     await this.addSearchParam(this.$route.query);
   },
   watch: {
     '$route.query'(value) {
       this.addSearchParam(value);
     }
-  }
+  },
 }
 </script>
 

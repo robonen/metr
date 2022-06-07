@@ -150,6 +150,11 @@ export default {
     }
   },
   async mounted() {
+    if (this.$store.getters.userAuthenticated) {
+      this.$router.push('/profile');
+      return;
+    }
+
     const id = this.$route.params.id;
 
     if (id === undefined)

@@ -81,6 +81,12 @@ export default {
       });
     }
   },
+  mounted() {
+    if (this.$store.getters.userAuthenticated) {
+      this.$router.push('/profile');
+      return;
+    }
+  }
 }
 </script>>
 
