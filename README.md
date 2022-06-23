@@ -1,9 +1,7 @@
 # Metr
 
 <p align="center">
-  <a href="https://forma-web.ru">
-    <img alt="Logo" src="metr/logo.svg" width="300" title="Logo">
-   </a>
+  <img alt="Logo" src="metr/logo.svg" width="300" title="Logo">
 </p>
 
 <p align="center">
